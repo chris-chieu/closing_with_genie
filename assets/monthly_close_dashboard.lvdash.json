@@ -1,0 +1,2198 @@
+{
+  "datasets": [
+    {
+      "name": "ds_close_status",
+      "displayName": "ds_close_status",
+      "queryLines": [
+        "SELECT\n",
+        "    5 AS target_days,\n",
+        "        3 AS actual_days_elapsed,\n",
+        "    CASE\n",
+        "        WHEN DATEDIFF('2026-02-04', '2026-02-01') <= 5 THEN 'On Track'\n",
+        "        ELSE 'Overdue'\n",
+        "    END AS close_status"
+      ]
+    },
+    {
+      "name": "ds_close_tasks_pct",
+      "displayName": "ds_close_tasks_pct",
+      "queryLines": [
+        "SELECT\n",
+        "    COUNT(*) AS total_tasks,\n",
+        "    SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) AS completed_tasks,\n",
+        "    SUM(CASE WHEN status = 'In Progress' THEN 1 ELSE 0 END) AS in_progress_tasks,\n",
+        "    SUM(CASE WHEN status = 'Not Started' THEN 1 ELSE 0 END) AS not_started_tasks,\n",
+        "    ROUND(\n",
+        "        100.0 * SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END)\n",
+        "        / COUNT(*), 1\n",
+        "    ) AS pct_completed\n",
+        "FROM christophe_chieu.demo_finance_department.close_tasks"
+      ]
+    },
+    {
+      "name": "ds_unreconciled_count",
+      "displayName": "Unreconciled Items Count",
+      "queryLines": [
+        "SELECT\n",
+        "    COUNT(*) AS total_items,\n",
+        "    SUM(CASE WHEN a.acct_invoice_id IS NOT NULL\n",
+        "              AND CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "                  = CAST(a.total_amount AS DECIMAL(18,2))\n",
+        "             THEN 1 ELSE 0 END) AS matched_count,\n",
+        "    SUM(CASE WHEN a.acct_invoice_id IS NULL\n",
+        "              OR  CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "                  != CAST(a.total_amount AS DECIMAL(18,2))\n",
+        "             THEN 1 ELSE 0 END) AS unreconciled_count\n",
+        "FROM christophe_chieu.demo_finance_department.crm_invoices c\n",
+        "LEFT JOIN christophe_chieu.demo_finance_department.accounting_invoices a ON c.crm_invoice_id = a.crm_invoice_id"
+      ]
+    },
+    {
+      "name": "ds_unreconciled_value",
+      "displayName": "Unreconciled Value ($)",
+      "queryLines": [
+        "SELECT\n",
+        "    crm.total_crm_revenue,\n",
+        "    acct.total_acct_revenue,\n",
+        "    inv_gap.invoice_variance AS unreconciled_value,\n",
+        "    ROUND(\n",
+        "        100.0 * inv_gap.invoice_variance\n",
+        "        / NULLIF(crm.total_crm_revenue, 0), 2\n",
+        "    ) AS unreconciled_pct\n",
+        "FROM\n",
+        "    (SELECT SUM(CAST(total_amount AS DECIMAL(18,2))) AS total_crm_revenue\n",
+        "     FROM christophe_chieu.demo_finance_department.crm_invoices) crm,\n",
+        "    (SELECT SUM(CAST(total_amount AS DECIMAL(18,2))) AS total_acct_revenue\n",
+        "     FROM christophe_chieu.demo_finance_department.accounting_invoices) acct,\n",
+        "    (SELECT SUM(\n",
+        "                CASE\n",
+        "                    WHEN a.acct_invoice_id IS NULL\n",
+        "                        THEN CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "                    ELSE ABS(CAST(a.total_amount AS DECIMAL(18,2))\n",
+        "                             - CAST(c.total_amount AS DECIMAL(18,2)))\n",
+        "                END\n",
+        "            ) AS invoice_variance\n",
+        "     FROM christophe_chieu.demo_finance_department.crm_invoices c\n",
+        "     LEFT JOIN christophe_chieu.demo_finance_department.accounting_invoices a ON c.crm_invoice_id = a.crm_invoice_id\n",
+        "     WHERE a.acct_invoice_id IS NULL\n",
+        "        OR CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "           != CAST(a.total_amount AS DECIMAL(18,2))\n",
+        "    ) inv_gap"
+      ]
+    },
+    {
+      "name": "ds_journal_ratio",
+      "displayName": "Manual vs Automated Journal Entries",
+      "queryLines": [
+        "SELECT\n",
+        "    SUM(CASE WHEN source = 'Automated' THEN 1 ELSE 0 END) AS automated_count,\n",
+        "    SUM(CASE WHEN source = 'Manual' THEN 1 ELSE 0 END) AS manual_count,\n",
+        "    COUNT(*) AS total_count,\n",
+        "    ROUND(\n",
+        "        100.0 * SUM(CASE WHEN source = 'Automated' THEN 1 ELSE 0 END)\n",
+        "        / COUNT(*), 1\n",
+        "    ) AS auto_pct\n",
+        "FROM christophe_chieu.demo_finance_department.journal_entries"
+      ]
+    },
+    {
+      "name": "ds_recon_status",
+      "displayName": "Reconciliation Status Breakdown",
+      "queryLines": [
+        "SELECT\n",
+        "    CASE\n",
+        "        WHEN a.acct_invoice_id IS NULL THEN 'Unmatched-CRM Only'\n",
+        "        WHEN CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "             != CAST(a.total_amount AS DECIMAL(18,2)) THEN 'Variance'\n",
+        "        ELSE 'Matched'\n",
+        "    END AS match_status,\n",
+        "    COUNT(*) AS item_count,\n",
+        "    SUM(\n",
+        "        CASE\n",
+        "            WHEN a.acct_invoice_id IS NULL\n",
+        "                THEN CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "            WHEN CAST(c.total_amount AS DECIMAL(18,2))\n",
+        "                 != CAST(a.total_amount AS DECIMAL(18,2))\n",
+        "                THEN ABS(CAST(a.total_amount AS DECIMAL(18,2))\n",
+        "                         - CAST(c.total_amount AS DECIMAL(18,2)))\n",
+        "            ELSE 0\n",
+        "        END\n",
+        "    ) AS total_variance\n",
+        "FROM christophe_chieu.demo_finance_department.crm_invoices c\n",
+        "LEFT JOIN christophe_chieu.demo_finance_department.accounting_invoices a ON c.crm_invoice_id = a.crm_invoice_id\n",
+        "GROUP BY 1\n",
+        "ORDER BY item_count DESC"
+      ]
+    },
+    {
+      "name": "ds_crm_vs_acct_revenue",
+      "displayName": "CRM vs Accounting Revenue",
+      "queryLines": [
+        "SELECT 'CRM (Source of Truth)' AS source_system,\n",
+        "       SUM(CAST(total_amount AS DECIMAL(18,2))) AS total_revenue\n",
+        "FROM christophe_chieu.demo_finance_department.crm_invoices\n",
+        "UNION ALL\n",
+        "SELECT 'Accounting (GL Posted)' AS source_system,\n",
+        "       SUM(CAST(total_amount AS DECIMAL(18,2))) AS total_revenue\n",
+        "FROM christophe_chieu.demo_finance_department.accounting_invoices\n",
+        "ORDER BY source_system"
+      ]
+    },
+    {
+      "name": "ds_open_issues_owner",
+      "displayName": "Open Issues by Owner",
+      "queryLines": [
+        "SELECT\n",
+        "    owner,\n",
+        "    COUNT(*) AS open_task_count,\n",
+        "    SUM(\n",
+        "        CASE\n",
+        "            WHEN due_date < CURRENT_DATE() THEN DATEDIFF(CURRENT_DATE(), due_date)\n",
+        "            ELSE 0\n",
+        "        END\n",
+        "    ) AS total_days_overdue\n",
+        "FROM christophe_chieu.demo_finance_department.close_tasks\n",
+        "WHERE status != 'Completed'\n",
+        "GROUP BY owner\n",
+        "ORDER BY open_task_count DESC"
+      ]
+    },
+    {
+      "name": "ds_close_timeline",
+      "displayName": "Close Task Completion Timeline",
+      "queryLines": [
+        "SELECT\n",
+        "    completed_date,\n",
+        "    COUNT(*) AS tasks_completed_on_day,\n",
+        "    SUM(COUNT(*)) OVER (ORDER BY completed_date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS cumulative_completed\n",
+        "FROM christophe_chieu.demo_finance_department.close_tasks\n",
+        "WHERE status = 'Completed'\n",
+        "  AND completed_date IS NOT NULL\n",
+        "  --AND completed_date != ''\n",
+        "GROUP BY completed_date\n",
+        "ORDER BY completed_date"
+      ]
+    },
+    {
+      "name": "ds_revenue_kpis",
+      "displayName": "Revenue KPIs – January 2026",
+      "queryLines": [
+        "SELECT\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS actual_revenue,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(budget_amount AS DECIMAL(18,2)) ELSE 0 END) AS budget_revenue,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(prior_year AS DECIMAL(18,2)) ELSE 0 END) AS prior_year_revenue,\n",
+        "    ROUND(\n",
+        "        100.0 * (\n",
+        "            SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "                     THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END)\n",
+        "          - SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "                     THEN CAST(budget_amount AS DECIMAL(18,2)) ELSE 0 END)\n",
+        "        ) / NULLIF(SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "                            THEN CAST(budget_amount AS DECIMAL(18,2)) ELSE 0 END), 0)\n",
+        "    , 1) AS budget_variance_pct\n",
+        "FROM christophe_chieu.demo_finance_department.budget_forecast\n",
+        "WHERE period = '2026-01'"
+      ]
+    },
+    {
+      "name": "ds_gross_margin",
+      "displayName": "Gross Margin % – January 2026",
+      "queryLines": [
+        "SELECT\n",
+        "    SUM(CASE WHEN line_item = 'Gross Profit'\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS gross_profit,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS total_revenue,\n",
+        "    ROUND(\n",
+        "        100.0 * SUM(CASE WHEN line_item = 'Gross Profit'\n",
+        "                         THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END)\n",
+        "        / NULLIF(SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "                          THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END), 0)\n",
+        "    , 1) AS gross_margin_pct\n",
+        "FROM christophe_chieu.demo_finance_department.budget_forecast\n",
+        "WHERE period = '2026-01'"
+      ]
+    },
+    {
+      "name": "ds_operating_profit",
+      "displayName": "Operating Profit – January 2026",
+      "queryLines": [
+        "SELECT\n",
+        "    SUM(CASE WHEN line_item = 'Operating Income'\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS operating_income_actual,\n",
+        "    SUM(CASE WHEN line_item = 'Operating Income'\n",
+        "             THEN CAST(budget_amount AS DECIMAL(18,2)) ELSE 0 END) AS operating_income_budget,\n",
+        "    SUM(CASE WHEN line_item = 'Net Income'\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS net_income_actual\n",
+        "FROM christophe_chieu.demo_finance_department.budget_forecast\n",
+        "WHERE period = '2026-01'"
+      ]
+    },
+    {
+      "name": "ds_revenue_by_region",
+      "displayName": "Revenue by Region",
+      "queryLines": [
+        "SELECT\n",
+        "    c.region,\n",
+        "    COUNT(DISTINCT ci.crm_invoice_id) AS invoice_count,\n",
+        "    SUM(CAST(ci.total_amount AS DECIMAL(18,2))) AS total_revenue,\n",
+        "    ROUND(\n",
+        "        100.0 * SUM(CAST(ci.total_amount AS DECIMAL(18,2)))\n",
+        "        / NULLIF((SELECT SUM(CAST(total_amount AS DECIMAL(18,2))) FROM christophe_chieu.demo_finance_department.crm_invoices), 0)\n",
+        "    , 1) AS pct_of_total\n",
+        "FROM christophe_chieu.demo_finance_department.crm_invoices ci\n",
+        "JOIN christophe_chieu.demo_finance_department.customers c ON ci.customer_id = c.customer_id\n",
+        "GROUP BY c.region\n",
+        "ORDER BY total_revenue DESC"
+      ]
+    },
+    {
+      "name": "ds_revenue_by_category",
+      "displayName": "Revenue by Product Category",
+      "queryLines": [
+        "SELECT\n",
+        "    p.category,\n",
+        "    COUNT(DISTINCT cl.crm_invoice_id) AS invoice_count,\n",
+        "    SUM(CAST(cl.line_total AS DECIMAL(18,2))) AS category_revenue,\n",
+        "    ROUND(\n",
+        "        100.0 * SUM(CAST(cl.line_total AS DECIMAL(18,2)))\n",
+        "        / NULLIF((SELECT SUM(CAST(line_total AS DECIMAL(18,2))) FROM christophe_chieu.demo_finance_department.crm_invoice_lines), 0)\n",
+        "    , 1) AS pct_of_total\n",
+        "FROM christophe_chieu.demo_finance_department.crm_invoice_lines cl\n",
+        "JOIN christophe_chieu.demo_finance_department.products p ON cl.product_id = p.product_id\n",
+        "GROUP BY p.category\n",
+        "ORDER BY category_revenue DESC"
+      ]
+    },
+    {
+      "name": "ds_pnl_variance",
+      "displayName": "P&L Variance Analysis – January 2026",
+      "queryLines": [
+        "SELECT\n",
+        "    line_item,\n",
+        "    CAST(actual_amount AS DECIMAL(18,2)) AS actual,\n",
+        "    CAST(budget_amount AS DECIMAL(18,2)) AS budget,\n",
+        "    CAST(prior_year AS DECIMAL(18,2)) AS prior_year,\n",
+        "    CAST(actual_amount AS DECIMAL(18,2)) - CAST(budget_amount AS DECIMAL(18,2)) AS actual_vs_budget,\n",
+        "    CAST(actual_amount AS DECIMAL(18,2)) - CAST(prior_year AS DECIMAL(18,2)) AS actual_vs_prior_year,\n",
+        "    ROUND(\n",
+        "        100.0 * (CAST(actual_amount AS DECIMAL(18,2)) - CAST(budget_amount AS DECIMAL(18,2)))\n",
+        "        / NULLIF(ABS(CAST(budget_amount AS DECIMAL(18,2))), 0)\n",
+        "    , 1) AS budget_variance_pct\n",
+        "FROM christophe_chieu.demo_finance_department.budget_forecast\n",
+        "WHERE period = '2026-01'\n",
+        "ORDER BY\n",
+        "    CASE line_item\n",
+        "        WHEN 'Product Revenue' THEN 1\n",
+        "        WHEN 'Service Revenue' THEN 2\n",
+        "        WHEN 'Returns & Allowances' THEN 3\n",
+        "        WHEN 'Cost of Goods Sold' THEN 4\n",
+        "        WHEN 'Gross Profit' THEN 5\n",
+        "        WHEN 'Salaries & Wages' THEN 6\n",
+        "        WHEN 'Rent & Occupancy' THEN 7\n",
+        "        WHEN 'Marketing & Advertising' THEN 8\n",
+        "        WHEN 'Technology & Software' THEN 9\n",
+        "        WHEN 'Professional Services' THEN 10\n",
+        "        WHEN 'Depreciation & Amortization' THEN 11\n",
+        "        WHEN 'Insurance' THEN 12\n",
+        "        WHEN 'Travel & Entertainment' THEN 13\n",
+        "        WHEN 'Utilities' THEN 14\n",
+        "        WHEN 'Other Operating Expenses' THEN 15\n",
+        "        WHEN 'Operating Income' THEN 16\n",
+        "        WHEN 'Interest Expense' THEN 17\n",
+        "        WHEN 'Tax Provision' THEN 18\n",
+        "        WHEN 'Net Income' THEN 19\n",
+        "        ELSE 99\n",
+        "    END"
+      ]
+    },
+    {
+      "name": "ds_balance_sheet_kpis",
+      "displayName": "Balance Sheet KPIs – January 2026",
+      "queryLines": [
+        "SELECT\n",
+        "    CAST(ar_balance AS DECIMAL(18,2)) AS ar_balance,\n",
+        "    CAST(ap_balance AS DECIMAL(18,2)) AS ap_balance,\n",
+        "    CAST(inventory_value AS DECIMAL(18,2)) AS inventory_value,\n",
+        "    CAST(cash_position AS DECIMAL(18,2)) AS cash_position,\n",
+        "    CAST(working_capital AS DECIMAL(18,2)) AS working_capital,\n",
+        "    CAST(dso_days AS DECIMAL(10,1)) AS dso_days,\n",
+        "    CAST(dpo_days AS DECIMAL(10,1)) AS dpo_days,\n",
+        "    ROUND(CAST(ar_balance AS DECIMAL(18,2)) / NULLIF(CAST(ap_balance AS DECIMAL(18,2)), 0), 2) AS current_ratio\n",
+        "FROM christophe_chieu.demo_finance_department.working_capital\n",
+        "WHERE period = '2026-01'"
+      ]
+    },
+    {
+      "name": "ds_ar_ap_trend",
+      "displayName": "AR / AP Trend (6 Months)",
+      "queryLines": [
+        "SELECT\n",
+        "    period,\n",
+        "    CAST(ar_balance AS DECIMAL(18,2)) AS ar_balance,\n",
+        "    CAST(ap_balance AS DECIMAL(18,2)) AS ap_balance,\n",
+        "    CAST(ar_balance AS DECIMAL(18,2)) - CAST(ap_balance AS DECIMAL(18,2)) AS net_ar_ap,\n",
+        "    CAST(dso_days AS DECIMAL(10,1)) AS dso_days,\n",
+        "    CAST(dpo_days AS DECIMAL(10,1)) AS dpo_days\n",
+        "FROM christophe_chieu.demo_finance_department.working_capital\n",
+        "ORDER BY period"
+      ]
+    },
+    {
+      "name": "ds_working_capital_components",
+      "displayName": "Working Capital Components",
+      "queryLines": [
+        "SELECT\n",
+        "    period,\n",
+        "    CAST(ar_balance AS DECIMAL(18,2)) AS accounts_receivable,\n",
+        "    CAST(inventory_value AS DECIMAL(18,2)) AS inventory,\n",
+        "    -CAST(ap_balance AS DECIMAL(18,2)) AS accounts_payable_neg,\n",
+        "    CAST(working_capital AS DECIMAL(18,2)) AS net_working_capital\n",
+        "FROM christophe_chieu.demo_finance_department.working_capital\n",
+        "ORDER BY period"
+      ]
+    },
+    {
+      "name": "ds_cash_trend",
+      "displayName": "Cash Position Trend (6 Months)",
+      "queryLines": [
+        "SELECT\n",
+        "    period,\n",
+        "    CAST(cash_position AS DECIMAL(18,2)) AS cash_position,\n",
+        "    LAG(CAST(cash_position AS DECIMAL(18,2))) OVER (ORDER BY period) AS prior_month_cash,\n",
+        "    CAST(cash_position AS DECIMAL(18,2))\n",
+        "      - COALESCE(LAG(CAST(cash_position AS DECIMAL(18,2))) OVER (ORDER BY period), 0) AS net_cash_change\n",
+        "FROM christophe_chieu.demo_finance_department.working_capital\n",
+        "ORDER BY period"
+      ]
+    },
+    {
+      "name": "ds_actual_vs_budget_trend",
+      "displayName": "Actual vs Budget vs Forecast – Revenue (12 Months)",
+      "queryLines": [
+        "SELECT\n",
+        "    period,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS actual_revenue,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(budget_amount AS DECIMAL(18,2)) ELSE 0 END) AS budget_revenue,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(forecast_amount AS DECIMAL(18,2)) ELSE 0 END) AS forecast_revenue,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(prior_year AS DECIMAL(18,2)) ELSE 0 END) AS prior_year_revenue\n",
+        "FROM christophe_chieu.demo_finance_department.budget_forecast\n",
+        "GROUP BY period\n",
+        "ORDER BY period"
+      ]
+    },
+    {
+      "name": "ds_revenue_by_type_trend",
+      "displayName": "Revenue Trend – Product vs Service (12 Months)",
+      "queryLines": [
+        "SELECT\n",
+        "    period,\n",
+        "    SUM(CASE WHEN line_item = 'Product Revenue'\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS product_revenue,\n",
+        "    SUM(CASE WHEN line_item = 'Service Revenue'\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS service_revenue,\n",
+        "    SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "             THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS total_revenue\n",
+        "FROM christophe_chieu.demo_finance_department.budget_forecast\n",
+        "GROUP BY period\n",
+        "ORDER BY period"
+      ]
+    },
+    {
+      "name": "ds_margin_trend",
+      "displayName": "Margin Trend (12 Months)",
+      "queryLines": [
+        "SELECT\n",
+        "    bf_rev.period,\n",
+        "    bf_rev.total_revenue,\n",
+        "    bf_gp.gross_profit,\n",
+        "    bf_oi.operating_income,\n",
+        "    bf_ni.net_income,\n",
+        "    ROUND(100.0 * bf_gp.gross_profit / NULLIF(bf_rev.total_revenue, 0), 1) AS gross_margin_pct,\n",
+        "    ROUND(100.0 * bf_oi.operating_income / NULLIF(bf_rev.total_revenue, 0), 1) AS operating_margin_pct,\n",
+        "    ROUND(100.0 * bf_ni.net_income / NULLIF(bf_rev.total_revenue, 0), 1) AS net_margin_pct\n",
+        "FROM (\n",
+        "    SELECT period,\n",
+        "           SUM(CASE WHEN line_item IN ('Product Revenue', 'Service Revenue')\n",
+        "                    THEN CAST(actual_amount AS DECIMAL(18,2)) ELSE 0 END) AS total_revenue\n",
+        "    FROM christophe_chieu.demo_finance_department.budget_forecast GROUP BY period\n",
+        ") bf_rev\n",
+        "LEFT JOIN (\n",
+        "    SELECT period,\n",
+        "           SUM(CAST(actual_amount AS DECIMAL(18,2))) AS gross_profit\n",
+        "    FROM christophe_chieu.demo_finance_department.budget_forecast WHERE line_item = 'Gross Profit' GROUP BY period\n",
+        ") bf_gp ON bf_rev.period = bf_gp.period\n",
+        "LEFT JOIN (\n",
+        "    SELECT period,\n",
+        "           SUM(CAST(actual_amount AS DECIMAL(18,2))) AS operating_income\n",
+        "    FROM christophe_chieu.demo_finance_department.budget_forecast WHERE line_item = 'Operating Income' GROUP BY period\n",
+        ") bf_oi ON bf_rev.period = bf_oi.period\n",
+        "LEFT JOIN (\n",
+        "    SELECT period,\n",
+        "           SUM(CAST(actual_amount AS DECIMAL(18,2))) AS net_income\n",
+        "    FROM christophe_chieu.demo_finance_department.budget_forecast WHERE line_item = 'Net Income' GROUP BY period\n",
+        ") bf_ni ON bf_rev.period = bf_ni.period\n",
+        "ORDER BY bf_rev.period"
+      ]
+    },
+    {
+      "name": "ds_cash_flow_trend",
+      "displayName": "Cash Flow Trend (6 Months)",
+      "queryLines": [
+        "SELECT\n",
+        "    period,\n",
+        "    CAST(cash_position AS DECIMAL(18,2)) AS cash_position,\n",
+        "    LAG(CAST(cash_position AS DECIMAL(18,2))) OVER (ORDER BY period) AS prior_month_cash,\n",
+        "    CAST(cash_position AS DECIMAL(18,2))\n",
+        "      - COALESCE(LAG(CAST(cash_position AS DECIMAL(18,2))) OVER (ORDER BY period), 0) AS net_cash_change\n",
+        "FROM christophe_chieu.demo_finance_department.working_capital\n",
+        "ORDER BY period"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "page_reconciliation",
+      "displayName": "Reconciliation & Close-Process KPIs",
+      "layout": [
+        {
+          "widget": {
+            "name": "header_page1",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# January 2026 Monthly Close — Day 3 of 5\n",
+                "\n",
+                "Reconciliation status and close-process tracking. **Target: 5-day close.**"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_days_to_close",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_close_status",
+                  "fields": [
+                    {
+                      "name": "actual_days_elapsed",
+                      "expression": "`actual_days_elapsed`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Days to Close (Target: 5)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "actual_days_elapsed",
+                  "style": {
+                    "rules": [
+                      {
+                        "condition": {
+                          "operand": {
+                            "type": "data-value",
+                            "value": "6"
+                          },
+                          "operator": "<"
+                        },
+                        "color": "#00A972"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_tasks_completed_pct",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_close_tasks_pct",
+                  "fields": [
+                    {
+                      "name": "pct_completed",
+                      "expression": "`pct_completed`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Close Tasks Completed %"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "pct_completed"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_unreconciled_count",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_unreconciled_count",
+                  "fields": [
+                    {
+                      "name": "sum(unreconciled_count)",
+                      "expression": "SUM(`unreconciled_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Unreconciled Items"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(unreconciled_count)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_unreconciled_value",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_unreconciled_value",
+                  "fields": [
+                    {
+                      "name": "sum(unreconciled_value)",
+                      "expression": "SUM(`unreconciled_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Unreconciled $"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(unreconciled_value)",
+                  "style": {
+                    "rules": [
+                      {
+                        "condition": {
+                          "operand": {
+                            "type": "data-value",
+                            "value": "0"
+                          },
+                          "operator": ">"
+                        },
+                        "color": "#D32F2F"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_recon_status",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recon_status",
+                  "fields": [
+                    {
+                      "name": "match_status",
+                      "expression": "`match_status`"
+                    },
+                    {
+                      "name": "item_count",
+                      "expression": "`item_count`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Reconciliation Status (Matched / Unmatched / Variance)"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "match_status",
+                  "displayName": "Match Status",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "item_count",
+                  "displayName": "Item Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "match_status",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_crm_vs_acct_revenue",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crm_vs_acct_revenue",
+                  "fields": [
+                    {
+                      "name": "source_system",
+                      "expression": "`source_system`"
+                    },
+                    {
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "CRM vs Accounting Revenue — January 2026"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "source_system",
+                  "displayName": "Source System",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "total_revenue",
+                  "displayName": "Total Revenue ($)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "source_system",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 3,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_open_issues_owner",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_open_issues_owner",
+                  "fields": [
+                    {
+                      "name": "owner",
+                      "expression": "`owner`"
+                    },
+                    {
+                      "name": "open_task_count",
+                      "expression": "`open_task_count`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Open Issues by Owner"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "owner",
+                  "displayName": "Task Owner",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "open_task_count",
+                  "displayName": "Open Tasks",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "owner",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_close_timeline",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_close_timeline",
+                  "fields": [
+                    {
+                      "name": "completed_date",
+                      "expression": "`completed_date`"
+                    },
+                    {
+                      "name": "tasks_completed_on_day",
+                      "expression": "`tasks_completed_on_day`"
+                    },
+                    {
+                      "name": "cumulative_completed",
+                      "expression": "`cumulative_completed`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "completed_date",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "displayName": "Date"
+                },
+                "y": {
+                  "fieldName": "cumulative_completed",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Cumulative Tasks Completed"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Close Task Completion Timeline"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 7,
+            "width": 3,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "page_pnl",
+      "displayName": "P&L and Revenue KPIs",
+      "layout": [
+        {
+          "widget": {
+            "name": "header_page2",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# P&L and Revenue Analysis — January 2026\n",
+                "\n",
+                "Revenue performance, gross margin, operating profit, and dimensional breakdowns."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_revenue",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_revenue_kpis",
+                  "fields": [
+                    {
+                      "name": "sum(budget_revenue)",
+                      "expression": "SUM(`budget_revenue`)"
+                    },
+                    {
+                      "name": "sum(actual_revenue)",
+                      "expression": "SUM(`actual_revenue`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue (Actual vs Budget)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(actual_revenue)",
+                  "style": {
+                    "rules": [
+                      {
+                        "condition": {
+                          "operand": {
+                            "type": "data-value",
+                            "value": "0"
+                          },
+                          "operator": ">"
+                        },
+                        "color": "#00A972"
+                      }
+                    ]
+                  }
+                },
+                "target": {
+                  "fieldName": "sum(budget_revenue)",
+                  "change": {
+                    "type": "percent"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_gross_margin",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_gross_margin",
+                  "fields": [
+                    {
+                      "name": "approx_percentile(gross_margin_pct, percentage=0_5)",
+                      "expression": "APPROX_PERCENTILE(`gross_margin_pct`, 0.5)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Gross Margin %"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "approx_percentile(gross_margin_pct, percentage=0_5)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_operating_profit",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_operating_profit",
+                  "fields": [
+                    {
+                      "name": "sum(operating_income_budget)",
+                      "expression": "SUM(`operating_income_budget`)"
+                    },
+                    {
+                      "name": "sum(operating_income_actual)",
+                      "expression": "SUM(`operating_income_actual`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Operating Income ($)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(operating_income_actual)",
+                  "style": {
+                    "rules": [
+                      {
+                        "condition": {
+                          "operand": {
+                            "type": "data-value",
+                            "value": "0"
+                          },
+                          "operator": ">"
+                        },
+                        "color": "#00A972"
+                      }
+                    ]
+                  }
+                },
+                "target": {
+                  "fieldName": "sum(operating_income_budget)",
+                  "change": {
+                    "type": "percent"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "condition": {
+                          "operator": ">="
+                        },
+                        "color": "#00A972"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_revenue_by_region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_revenue_by_region",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by Region"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "region",
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "total_revenue",
+                  "displayName": "Revenue ($)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_revenue_by_category",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_revenue_by_category",
+                  "fields": [
+                    {
+                      "name": "category",
+                      "expression": "`category`"
+                    },
+                    {
+                      "name": "category_revenue",
+                      "expression": "`category_revenue`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue by Product Category"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "category",
+                  "displayName": "Product Category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "category_revenue",
+                  "displayName": "Revenue ($)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 3,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "table_pnl_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_pnl_variance",
+                  "fields": [
+                    {
+                      "name": "line_item",
+                      "expression": "`line_item`"
+                    },
+                    {
+                      "name": "actual",
+                      "expression": "`actual`"
+                    },
+                    {
+                      "name": "budget",
+                      "expression": "`budget`"
+                    },
+                    {
+                      "name": "prior_year",
+                      "expression": "`prior_year`"
+                    },
+                    {
+                      "name": "actual_vs_budget",
+                      "expression": "`actual_vs_budget`"
+                    },
+                    {
+                      "name": "budget_variance_pct",
+                      "expression": "`budget_variance_pct`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "invisibleColumns": [
+                {
+                  "booleanValues": [
+                    "false",
+                    "true"
+                  ],
+                  "imageUrlTemplate": "{{ @ }}",
+                  "imageTitleTemplate": "{{ @ }}",
+                  "imageWidth": "",
+                  "imageHeight": "",
+                  "linkUrlTemplate": "{{ @ }}",
+                  "linkTextTemplate": "{{ @ }}",
+                  "linkTitleTemplate": "{{ @ }}",
+                  "linkOpenInNewTab": true,
+                  "name": "actual_vs_prior_year",
+                  "type": "decimal",
+                  "displayAs": "number",
+                  "order": 100005,
+                  "title": "actual_vs_prior_year",
+                  "allowSearch": false,
+                  "alignContent": "right",
+                  "allowHTML": false,
+                  "highlightLinks": false,
+                  "useMonospaceFont": false,
+                  "preserveWhitespace": false
+                }
+              ],
+              "allowHTMLByDefault": false,
+              "itemsPerPage": 25,
+              "paginationSize": "default",
+              "condensed": true,
+              "withRowNumber": false,
+              "frame": {
+                "showTitle": true,
+                "title": "Variance Analysis: Actual vs Budget vs Prior Year (January 2026)"
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "line_item",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 100000,
+                    "title": "line_item",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "actual",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "decimal",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100001,
+                    "title": "actual",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "budget",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "decimal",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100002,
+                    "title": "budget",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "prior_year",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "decimal",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100003,
+                    "title": "prior_year",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "actual_vs_budget",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "decimal",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100004,
+                    "title": "actual_vs_budget",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "budget_variance_pct",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "decimal",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100006,
+                    "title": "budget_variance_pct",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 6,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "page_balance_sheet",
+      "displayName": "Balance Sheet & Working Capital",
+      "layout": [
+        {
+          "widget": {
+            "name": "header_page3",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Balance Sheet and Working Capital — January 2026\n",
+                "\n",
+                "Accounts receivable, accounts payable, inventory, working capital, and cash position."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_ar_balance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_balance_sheet_kpis",
+                  "fields": [
+                    {
+                      "name": "sum(dso_days)",
+                      "expression": "SUM(`dso_days`)"
+                    },
+                    {
+                      "name": "sum(ar_balance)",
+                      "expression": "SUM(`ar_balance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "AR Balance ($)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(ar_balance)"
+                },
+                "target": {
+                  "fieldName": "sum(dso_days)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_ap_balance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_balance_sheet_kpis",
+                  "fields": [
+                    {
+                      "name": "sum(dpo_days)",
+                      "expression": "SUM(`dpo_days`)"
+                    },
+                    {
+                      "name": "sum(ap_balance)",
+                      "expression": "SUM(`ap_balance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "AP Balance ($)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(ap_balance)"
+                },
+                "target": {
+                  "fieldName": "sum(dpo_days)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_inventory",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_balance_sheet_kpis",
+                  "fields": [
+                    {
+                      "name": "sum(inventory_value)",
+                      "expression": "SUM(`inventory_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Inventory ($)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(inventory_value)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_working_capital",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_balance_sheet_kpis",
+                  "fields": [
+                    {
+                      "name": "sum(working_capital)",
+                      "expression": "SUM(`working_capital`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Working Capital ($)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(working_capital)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_cash_position",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_balance_sheet_kpis",
+                  "fields": [
+                    {
+                      "name": "sum(cash_position)",
+                      "expression": "SUM(`cash_position`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Cash ($)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(cash_position)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_ar_ap_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_ar_ap_trend",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "ar_balance",
+                      "expression": "`ar_balance`"
+                    },
+                    {
+                      "name": "ap_balance",
+                      "expression": "`ap_balance`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "AR / AP Trend (6 Months)"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "displayName": "Period",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "ar_balance",
+                      "displayName": "Balance ($)"
+                    },
+                    {
+                      "fieldName": "ap_balance"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_working_capital_components",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_working_capital_components",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "accounts_receivable",
+                      "expression": "`accounts_receivable`"
+                    },
+                    {
+                      "name": "inventory",
+                      "expression": "`inventory`"
+                    },
+                    {
+                      "name": "accounts_payable_neg",
+                      "expression": "`accounts_payable_neg`"
+                    },
+                    {
+                      "name": "net_working_capital",
+                      "expression": "`net_working_capital`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "Period"
+                },
+                "y": {
+                  "fieldName": "net_working_capital",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Amount ($)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Working Capital Components"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 3,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_cash_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_cash_trend",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "cash_position",
+                      "expression": "`cash_position`"
+                    },
+                    {
+                      "name": "net_cash_change",
+                      "expression": "`net_cash_change`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "displayName": "Period"
+                },
+                "y": {
+                  "fieldName": "cash_position",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Cash Position ($)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Cash Position Trend (6 Months)"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "page_budget_trends",
+      "displayName": "Budget, Forecast & Trends",
+      "layout": [
+        {
+          "widget": {
+            "name": "header_page4",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Budget, Forecast, and Trends\n",
+                "\n",
+                "12-month performance trends: revenue, margins, and cash flow against budget and forecast."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_actual_vs_budget_forecast",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_actual_vs_budget_trend",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "actual_revenue",
+                      "expression": "`actual_revenue`"
+                    },
+                    {
+                      "name": "forecast_revenue",
+                      "expression": "`forecast_revenue`"
+                    },
+                    {
+                      "name": "budget_revenue",
+                      "expression": "`budget_revenue`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Actual vs Budget vs Forecast — Revenue (12 Months)"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "displayName": "Period",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "actual_revenue",
+                      "displayName": "Revenue ($)"
+                    },
+                    {
+                      "fieldName": "forecast_revenue"
+                    },
+                    {
+                      "fieldName": "budget_revenue"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_revenue_by_type_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_revenue_by_type_trend",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
+                    },
+                    {
+                      "name": "product_revenue",
+                      "expression": "`product_revenue`"
+                    },
+                    {
+                      "name": "service_revenue",
+                      "expression": "`service_revenue`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Revenue Trend — Product vs Service (12 Months)"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "displayName": "Period",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "total_revenue",
+                      "displayName": "Revenue ($)"
+                    },
+                    {
+                      "fieldName": "product_revenue"
+                    },
+                    {
+                      "fieldName": "service_revenue"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_margin_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_margin_trend",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "gross_margin_pct",
+                      "expression": "`gross_margin_pct`"
+                    },
+                    {
+                      "name": "operating_margin_pct",
+                      "expression": "`operating_margin_pct`"
+                    },
+                    {
+                      "name": "net_margin_pct",
+                      "expression": "`net_margin_pct`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "displayName": "Period"
+                },
+                "y": {
+                  "fieldName": "gross_margin_pct",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Margin %"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Margin Trend (12 Months)"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_cash_flow_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_cash_flow_trend",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "cash_position",
+                      "expression": "`cash_position`"
+                    },
+                    {
+                      "name": "net_cash_change",
+                      "expression": "`net_cash_change`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "Period"
+                },
+                "y": {
+                  "fieldName": "net_cash_change",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Net Cash Change ($)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Cash Flow Trend (6 Months)"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "genieSpace": {
+      "isEnabled": true,
+      "overrideId": "01f10166fab7158480bf362bb24a74c5",
+      "enablementMode": "ENABLED"
+    },
+    "applyModeEnabled": false
+  }
+}
