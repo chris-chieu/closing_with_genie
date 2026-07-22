@@ -1,0 +1,96 @@
+{
+  "backup_timestamp": "2026-07-13T13:50:59.735606+00:00",
+  "space_id": "01f10166fab7158480bf362bb24a74c5",
+  "space_config": {
+    "space_id": "01f10166fab7158480bf362bb24a74c5",
+    "title": "Finance Genie Ask Me Anything",
+    "description": "This space enables comprehensive analysis and reconciliation of finance, invoicing, and customer data to support revenue operations, audit, and financial close processes.\n\n**Capabilities:**\n- Compare CRM and accounting systems to identify and explain revenue discrepancies, unmatched invoices, pricing differences, and credit adjustments.\n- Track and analyze invoices, payments, and journal entries to validate accounts receivable and ensure accurate revenue reporting.\n- Segment and profile customers by region and segment, assess product sales performance, perform retention and profitability analysis, and investigate root causes of financial gaps.\n\n**Limitations:**\n- Does not include detailed payment or adjustment transaction history beyond invoice- and credit-note headers.\n- Lacks real-time integration with external systems, so some data may not reflect recent transactions or adjustments.\n- Inventory movements and product returns beyond invoice data are not tracked.",
+    "warehouse_id": "92c59e15a0fdb8f0",
+    "parent_path": "/Users/christophe.chieu@databricks.com",
+    "run_as_type": "VIEWER"
+  },
+  "sources": [
+    {
+      "full_name": "christophe_chieu.demo_finance_department.customers"
+    },
+    {
+      "full_name": "christophe_chieu.demo_finance_department.accounting_invoice_lines"
+    },
+    {
+      "full_name": "christophe_chieu.demo_finance_department.accounting_invoices"
+    },
+    {
+      "full_name": "christophe_chieu.demo_finance_department.crm_invoice_lines"
+    },
+    {
+      "full_name": "christophe_chieu.demo_finance_department.crm_invoices"
+    },
+    {
+      "full_name": "christophe_chieu.demo_finance_department.journal_entries"
+    },
+    {
+      "full_name": "christophe_chieu.demo_finance_department.products"
+    }
+  ],
+  "instructions": {
+    "instructions": [
+      {
+        "title": "Notes",
+        "type": "TEXT_INSTRUCTION",
+        "id": "01f10169720c13198e4259fa2a75fd09",
+        "content": "Monthly close operations:\nRevenue reconciliation: Compare total CRM revenue to total accounting revenue. Identify and quantify any gap. Break down discrepancies at the invoice level.\nInvoice matching: Every CRM invoice should have a corresponding accounting invoice. Use LEFT JOIN on crm_invoice_id to find unmatched records — these represent invoices that exist in CRM but were never posted to accounting.\nPrice verification: For matched invoices where amounts differ, drill into line items to determine whether differences are in unit price, quantity, or both. Pricing discrepancies may relate to promotional discounts not being applied consistently across systems.\nCredit adjustments: In CRM, credit notes and adjustments are applied at the invoice header level — the total_amount is reduced while the original line items remain unchanged. This means the sum of an invoice's line items represents the gross amount before credits, while the header total_amount represents the net amount after credits. When a credit adjustment has been applied in CRM but not posted to accounting, the CRM header will be lower than the accounting header, even though both systems' line items are identical. To identify these cases, look for invoices where line-item totals match between CRM and accounting but the invoice header totals differ — the difference represents an unposted credit adjustment.\nJournal entry review: Verify that revenue journal entries tie to invoices. Check the balance of automated vs manual entries. Manual entries carry higher risk of error and should be reviewed.\nAR validation: Accounts receivable should align with outstanding invoices. Check GL account 1100 in journal entries against invoice totals.\nCustomer and product analysis: When discrepancies are found, break them down by customer segment, region, and product category to assess impact and identify patterns\n\nInvestigation guidance — when analyzing reconciliation gaps:\nAlways start by comparing aggregate CRM vs accounting totals to quantify the overall gap.\nThen decompose: how much comes from unmatched invoices (CRM only), and how much from amount variances on matched invoices?\nFor unmatched invoices, check if they are concentrated in certain customers, regions, or time periods.\nFor amount variances, classify them into two distinct categories:\nPricing differences: Line-item unit prices differ between CRM and accounting (e.g., CRM shows a discounted price, accounting shows list price). These indicate a pricing or discount issue.\nCredit adjustments: Line-item totals match between systems, but invoice header totals differ. The CRM header is lower because a credit, refund, or adjustment was applied at the header level in CRM but not posted to accounting. These need to be posted separately.\nCheck whether pricing patterns suggest a systematic issue (e.g., all differences are ~15%, suggesting a promotional discount not applied) versus random errors.\nAlways separate these two categories in your analysis — they have different root causes and require different corrective actions."
+      },
+      {
+        "title": "christophe_chieu.demo_finance_department.accounting_invoices",
+        "type": "FROM_SNIPPET",
+        "id": "01f10480f8fe13f3b40b66969ca60ede",
+        "baseTable": "christophe_chieu.demo_finance_department.accounting_invoices",
+        "joinedTable": "christophe_chieu.demo_finance_department.crm_invoices",
+        "relationshipType": "FROM_RELATIONSHIP_TYPE_ONE_TO_ONE",
+        "content": "`accounting_invoices`.`acct_invoice_id` = `crm_invoices`.`crm_invoice_id`"
+      },
+      {
+        "title": "christophe_chieu.demo_finance_department.accounting_invoice_lines",
+        "type": "FROM_SNIPPET",
+        "id": "01f10486c50018d9b919415dcdbc9934",
+        "baseTable": "christophe_chieu.demo_finance_department.accounting_invoice_lines",
+        "joinedTable": "christophe_chieu.demo_finance_department.crm_invoice_lines",
+        "relationshipType": "FROM_RELATIONSHIP_TYPE_ONE_TO_ONE",
+        "content": "`accounting_invoice_lines`.`product_id` = `crm_invoice_lines`.`product_id`"
+      },
+      {
+        "title": "christophe_chieu.demo_finance_department.accounting_invoice_lines",
+        "type": "FROM_SNIPPET",
+        "id": "01f10486f2401579822b1a4f5218637e",
+        "baseTable": "christophe_chieu.demo_finance_department.accounting_invoice_lines",
+        "joinedTable": "christophe_chieu.demo_finance_department.products",
+        "relationshipType": "FROM_RELATIONSHIP_TYPE_ONE_TO_MANY",
+        "content": "`accounting_invoice_lines`.`product_id` = `products`.`product_id`"
+      },
+      {
+        "title": "christophe_chieu.demo_finance_department.crm_invoice_lines",
+        "type": "FROM_SNIPPET",
+        "id": "01f1048706031fe990b9574490361042",
+        "baseTable": "christophe_chieu.demo_finance_department.crm_invoice_lines",
+        "joinedTable": "christophe_chieu.demo_finance_department.products",
+        "relationshipType": "FROM_RELATIONSHIP_TYPE_MANY_TO_ONE",
+        "content": "`crm_invoice_lines`.`product_id` = `products`.`product_id`"
+      },
+      {
+        "title": "christophe_chieu.demo_finance_department.accounting_invoices",
+        "type": "FROM_SNIPPET",
+        "id": "01f10487d8b911d3ad46882a150d9189",
+        "baseTable": "christophe_chieu.demo_finance_department.accounting_invoices",
+        "joinedTable": "christophe_chieu.demo_finance_department.journal_entries",
+        "relationshipType": "FROM_RELATIONSHIP_TYPE_ONE_TO_MANY",
+        "content": "`accounting_invoices`.`acct_invoice_id` = `journal_entries`.`reference`"
+      }
+    ]
+  },
+  "examples": {
+    "benchmark_questions": [],
+    "starter_questions": []
+  },
+  "benchmark_questions": [],
+  "starter_questions": []
+}
