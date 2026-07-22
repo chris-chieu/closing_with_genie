@@ -1,0 +1,416 @@
+journal_entry_id,gl_account,gl_account_name,posting_date,amount,entry_type,source,description,reference
+JE-00001,4000,Revenue - Products,2026-01-09,2113.65,Credit,Automated,Revenue recognition - ACCT-INV-00001,ACCT-INV-00001
+JE-00002,1100,Accounts Receivable,2026-01-09,2577.62,Debit,Automated,AR posting - ACCT-INV-00001,ACCT-INV-00001
+JE-00003,4000,Revenue - Products,2026-01-10,788.22,Credit,Automated,Revenue recognition - ACCT-INV-00002,ACCT-INV-00002
+JE-00004,1100,Accounts Receivable,2026-01-10,961.24,Debit,Automated,AR posting - ACCT-INV-00002,ACCT-INV-00002
+JE-00005,4000,Revenue - Products,2026-01-24,3774.92,Credit,Automated,Revenue recognition - ACCT-INV-00003,ACCT-INV-00003
+JE-00006,1100,Accounts Receivable,2026-01-24,4603.56,Debit,Automated,AR posting - ACCT-INV-00003,ACCT-INV-00003
+JE-00007,4000,Revenue - Products,2026-01-21,20409.82,Credit,Automated,Revenue recognition - ACCT-INV-00004,ACCT-INV-00004
+JE-00008,1100,Accounts Receivable,2026-01-21,24890.02,Debit,Automated,AR posting - ACCT-INV-00004,ACCT-INV-00004
+JE-00009,4000,Revenue - Products,2026-01-16,4316.69,Credit,Automated,Revenue recognition - ACCT-INV-00005,ACCT-INV-00005
+JE-00010,1100,Accounts Receivable,2026-01-16,5264.25,Debit,Automated,AR posting - ACCT-INV-00005,ACCT-INV-00005
+JE-00011,4000,Revenue - Products,2026-01-09,4779.30,Credit,Automated,Revenue recognition - ACCT-INV-00006,ACCT-INV-00006
+JE-00012,1100,Accounts Receivable,2026-01-09,5828.41,Debit,Automated,AR posting - ACCT-INV-00006,ACCT-INV-00006
+JE-00013,4000,Revenue - Products,2026-01-31,15467.29,Credit,Automated,Revenue recognition - ACCT-INV-00007,ACCT-INV-00007
+JE-00014,1100,Accounts Receivable,2026-01-31,18862.55,Debit,Automated,AR posting - ACCT-INV-00007,ACCT-INV-00007
+JE-00015,4000,Revenue - Products,2026-01-26,2138.14,Credit,Automated,Revenue recognition - ACCT-INV-00008,ACCT-INV-00008
+JE-00016,1100,Accounts Receivable,2026-01-26,2607.49,Debit,Automated,AR posting - ACCT-INV-00008,ACCT-INV-00008
+JE-00017,4000,Revenue - Products,2026-01-31,130.12,Credit,Automated,Revenue recognition - ACCT-INV-00009,ACCT-INV-00009
+JE-00018,1100,Accounts Receivable,2026-01-31,158.68,Debit,Automated,AR posting - ACCT-INV-00009,ACCT-INV-00009
+JE-00019,4000,Revenue - Products,2026-01-08,697.24,Credit,Automated,Revenue recognition - ACCT-INV-00010,ACCT-INV-00010
+JE-00020,1100,Accounts Receivable,2026-01-08,850.29,Debit,Automated,AR posting - ACCT-INV-00010,ACCT-INV-00010
+JE-00021,4000,Revenue - Products,2026-01-15,4351.47,Credit,Automated,Revenue recognition - ACCT-INV-00011,ACCT-INV-00011
+JE-00022,1100,Accounts Receivable,2026-01-15,5306.67,Debit,Automated,AR posting - ACCT-INV-00011,ACCT-INV-00011
+JE-00023,4000,Revenue - Products,2026-01-01,850.26,Credit,Automated,Revenue recognition - ACCT-INV-00012,ACCT-INV-00012
+JE-00024,1100,Accounts Receivable,2026-01-01,1036.90,Debit,Automated,AR posting - ACCT-INV-00012,ACCT-INV-00012
+JE-00025,4000,Revenue - Products,2026-01-01,3648.66,Credit,Automated,Revenue recognition - ACCT-INV-00013,ACCT-INV-00013
+JE-00026,1100,Accounts Receivable,2026-01-01,4449.59,Debit,Automated,AR posting - ACCT-INV-00013,ACCT-INV-00013
+JE-00027,4000,Revenue - Products,2026-01-26,4928.68,Credit,Automated,Revenue recognition - ACCT-INV-00014,ACCT-INV-00014
+JE-00028,1100,Accounts Receivable,2026-01-26,6010.58,Debit,Automated,AR posting - ACCT-INV-00014,ACCT-INV-00014
+JE-00029,4000,Revenue - Products,2026-01-21,1971.69,Credit,Automated,Revenue recognition - ACCT-INV-00015,ACCT-INV-00015
+JE-00030,1100,Accounts Receivable,2026-01-21,2404.50,Debit,Automated,AR posting - ACCT-INV-00015,ACCT-INV-00015
+JE-00031,4000,Revenue - Products,2026-01-16,23.71,Credit,Automated,Revenue recognition - ACCT-INV-00016,ACCT-INV-00016
+JE-00032,1100,Accounts Receivable,2026-01-16,28.92,Debit,Automated,AR posting - ACCT-INV-00016,ACCT-INV-00016
+JE-00033,4000,Revenue - Products,2026-01-16,3578.76,Credit,Automated,Revenue recognition - ACCT-INV-00017,ACCT-INV-00017
+JE-00034,1100,Accounts Receivable,2026-01-16,4364.34,Debit,Automated,AR posting - ACCT-INV-00017,ACCT-INV-00017
+JE-00035,4000,Revenue - Products,2026-01-29,4762.67,Credit,Automated,Revenue recognition - ACCT-INV-00018,ACCT-INV-00018
+JE-00036,1100,Accounts Receivable,2026-01-29,5808.13,Debit,Automated,AR posting - ACCT-INV-00018,ACCT-INV-00018
+JE-00037,4000,Revenue - Products,2026-01-19,3135.09,Credit,Automated,Revenue recognition - ACCT-INV-00019,ACCT-INV-00019
+JE-00038,1100,Accounts Receivable,2026-01-19,3823.28,Debit,Automated,AR posting - ACCT-INV-00019,ACCT-INV-00019
+JE-00039,4000,Revenue - Products,2026-01-19,4910.35,Credit,Automated,Revenue recognition - ACCT-INV-00020,ACCT-INV-00020
+JE-00040,1100,Accounts Receivable,2026-01-19,5988.23,Debit,Automated,AR posting - ACCT-INV-00020,ACCT-INV-00020
+JE-00041,4000,Revenue - Products,2026-01-08,1413.99,Credit,Automated,Revenue recognition - ACCT-INV-00021,ACCT-INV-00021
+JE-00042,1100,Accounts Receivable,2026-01-08,1724.38,Debit,Automated,AR posting - ACCT-INV-00021,ACCT-INV-00021
+JE-00043,4000,Revenue - Products,2026-01-01,5265.92,Credit,Automated,Revenue recognition - ACCT-INV-00022,ACCT-INV-00022
+JE-00044,1100,Accounts Receivable,2026-01-01,6421.85,Debit,Automated,AR posting - ACCT-INV-00022,ACCT-INV-00022
+JE-00045,4000,Revenue - Products,2026-01-19,4651.05,Credit,Automated,Revenue recognition - ACCT-INV-00023,ACCT-INV-00023
+JE-00046,1100,Accounts Receivable,2026-01-19,5672.01,Debit,Automated,AR posting - ACCT-INV-00023,ACCT-INV-00023
+JE-00047,4000,Revenue - Products,2026-01-05,2145.54,Credit,Automated,Revenue recognition - ACCT-INV-00024,ACCT-INV-00024
+JE-00048,1100,Accounts Receivable,2026-01-05,2616.51,Debit,Automated,AR posting - ACCT-INV-00024,ACCT-INV-00024
+JE-00049,4000,Revenue - Products,2026-01-05,2085.92,Credit,Automated,Revenue recognition - ACCT-INV-00025,ACCT-INV-00025
+JE-00050,1100,Accounts Receivable,2026-01-05,2543.80,Debit,Automated,AR posting - ACCT-INV-00025,ACCT-INV-00025
+JE-00051,4000,Revenue - Products,2026-01-17,4866.08,Credit,Automated,Revenue recognition - ACCT-INV-00026,ACCT-INV-00026
+JE-00052,1100,Accounts Receivable,2026-01-17,5934.24,Debit,Automated,AR posting - ACCT-INV-00026,ACCT-INV-00026
+JE-00053,4000,Revenue - Products,2026-01-10,3166.33,Credit,Automated,Revenue recognition - ACCT-INV-00027,ACCT-INV-00027
+JE-00054,1100,Accounts Receivable,2026-01-10,3861.38,Debit,Automated,AR posting - ACCT-INV-00027,ACCT-INV-00027
+JE-00055,4000,Revenue - Products,2026-01-10,2462.33,Credit,Automated,Revenue recognition - ACCT-INV-00028,ACCT-INV-00028
+JE-00056,1100,Accounts Receivable,2026-01-10,3002.84,Debit,Automated,AR posting - ACCT-INV-00028,ACCT-INV-00028
+JE-00057,4000,Revenue - Products,2026-01-26,1846.80,Credit,Automated,Revenue recognition - ACCT-INV-00029,ACCT-INV-00029
+JE-00058,1100,Accounts Receivable,2026-01-26,2252.20,Debit,Automated,AR posting - ACCT-INV-00029,ACCT-INV-00029
+JE-00059,4000,Revenue - Products,2026-01-21,3352.20,Credit,Automated,Revenue recognition - ACCT-INV-00030,ACCT-INV-00030
+JE-00060,1100,Accounts Receivable,2026-01-21,4088.05,Debit,Automated,AR posting - ACCT-INV-00030,ACCT-INV-00030
+JE-00061,4000,Revenue - Products,2026-01-13,2774.36,Credit,Automated,Revenue recognition - ACCT-INV-00031,ACCT-INV-00031
+JE-00062,1100,Accounts Receivable,2026-01-13,3383.37,Debit,Automated,AR posting - ACCT-INV-00031,ACCT-INV-00031
+JE-00063,4000,Revenue - Products,2026-01-07,2305.39,Credit,Automated,Revenue recognition - ACCT-INV-00032,ACCT-INV-00032
+JE-00064,1100,Accounts Receivable,2026-01-07,2811.45,Debit,Automated,AR posting - ACCT-INV-00032,ACCT-INV-00032
+JE-00065,4000,Revenue - Products,2026-01-27,2990.23,Credit,Automated,Revenue recognition - ACCT-INV-00033,ACCT-INV-00033
+JE-00066,1100,Accounts Receivable,2026-01-27,3646.62,Debit,Automated,AR posting - ACCT-INV-00033,ACCT-INV-00033
+JE-00067,4000,Revenue - Products,2026-01-31,661.75,Credit,Automated,Revenue recognition - ACCT-INV-00034,ACCT-INV-00034
+JE-00068,1100,Accounts Receivable,2026-01-31,807.01,Debit,Automated,AR posting - ACCT-INV-00034,ACCT-INV-00034
+JE-00069,4000,Revenue - Products,2026-01-22,4358.37,Credit,Automated,Revenue recognition - ACCT-INV-00035,ACCT-INV-00035
+JE-00070,1100,Accounts Receivable,2026-01-22,5315.09,Debit,Automated,AR posting - ACCT-INV-00035,ACCT-INV-00035
+JE-00071,4000,Revenue - Products,2026-01-15,3496.11,Credit,Automated,Revenue recognition - ACCT-INV-00036,ACCT-INV-00036
+JE-00072,1100,Accounts Receivable,2026-01-15,4263.55,Debit,Automated,AR posting - ACCT-INV-00036,ACCT-INV-00036
+JE-00073,4000,Revenue - Products,2026-01-06,24439.12,Credit,Automated,Revenue recognition - ACCT-INV-00037,ACCT-INV-00037
+JE-00074,1100,Accounts Receivable,2026-01-06,29803.81,Debit,Automated,AR posting - ACCT-INV-00037,ACCT-INV-00037
+JE-00075,4000,Revenue - Products,2026-01-24,5318.86,Credit,Automated,Revenue recognition - ACCT-INV-00038,ACCT-INV-00038
+JE-00076,1100,Accounts Receivable,2026-01-24,6486.42,Debit,Automated,AR posting - ACCT-INV-00038,ACCT-INV-00038
+JE-00077,4000,Revenue - Products,2026-01-14,760.71,Credit,Automated,Revenue recognition - ACCT-INV-00039,ACCT-INV-00039
+JE-00078,1100,Accounts Receivable,2026-01-14,927.69,Debit,Automated,AR posting - ACCT-INV-00039,ACCT-INV-00039
+JE-00079,4000,Revenue - Products,2026-01-15,5549.43,Credit,Automated,Revenue recognition - ACCT-INV-00040,ACCT-INV-00040
+JE-00080,1100,Accounts Receivable,2026-01-15,6767.60,Debit,Automated,AR posting - ACCT-INV-00040,ACCT-INV-00040
+JE-00081,4000,Revenue - Products,2026-01-23,3530.78,Credit,Automated,Revenue recognition - ACCT-INV-00041,ACCT-INV-00041
+JE-00082,1100,Accounts Receivable,2026-01-23,4305.83,Debit,Automated,AR posting - ACCT-INV-00041,ACCT-INV-00041
+JE-00083,4000,Revenue - Products,2026-01-26,7229.90,Credit,Automated,Revenue recognition - ACCT-INV-00042,ACCT-INV-00042
+JE-00084,1100,Accounts Receivable,2026-01-26,8816.95,Debit,Automated,AR posting - ACCT-INV-00042,ACCT-INV-00042
+JE-00085,4000,Revenue - Products,2026-01-18,4269.94,Credit,Automated,Revenue recognition - ACCT-INV-00043,ACCT-INV-00043
+JE-00086,1100,Accounts Receivable,2026-01-18,5207.24,Debit,Automated,AR posting - ACCT-INV-00043,ACCT-INV-00043
+JE-00087,4000,Revenue - Products,2026-01-15,3249.37,Credit,Automated,Revenue recognition - ACCT-INV-00044,ACCT-INV-00044
+JE-00088,1100,Accounts Receivable,2026-01-15,3962.65,Debit,Automated,AR posting - ACCT-INV-00044,ACCT-INV-00044
+JE-00089,4000,Revenue - Products,2026-01-06,2402.06,Credit,Automated,Revenue recognition - ACCT-INV-00045,ACCT-INV-00045
+JE-00090,1100,Accounts Receivable,2026-01-06,2929.34,Debit,Automated,AR posting - ACCT-INV-00045,ACCT-INV-00045
+JE-00091,4000,Revenue - Products,2026-01-11,6354.85,Credit,Automated,Revenue recognition - ACCT-INV-00046,ACCT-INV-00046
+JE-00092,1100,Accounts Receivable,2026-01-11,7749.82,Debit,Automated,AR posting - ACCT-INV-00046,ACCT-INV-00046
+JE-00093,4000,Revenue - Products,2026-01-03,1635.08,Credit,Automated,Revenue recognition - ACCT-INV-00047,ACCT-INV-00047
+JE-00094,1100,Accounts Receivable,2026-01-03,1994.00,Debit,Automated,AR posting - ACCT-INV-00047,ACCT-INV-00047
+JE-00095,4000,Revenue - Products,2026-01-23,3119.09,Credit,Automated,Revenue recognition - ACCT-INV-00048,ACCT-INV-00048
+JE-00096,1100,Accounts Receivable,2026-01-23,3803.77,Debit,Automated,AR posting - ACCT-INV-00048,ACCT-INV-00048
+JE-00097,4000,Revenue - Products,2026-01-06,3810.88,Credit,Automated,Revenue recognition - ACCT-INV-00049,ACCT-INV-00049
+JE-00098,1100,Accounts Receivable,2026-01-06,4647.42,Debit,Automated,AR posting - ACCT-INV-00049,ACCT-INV-00049
+JE-00099,4000,Revenue - Products,2026-01-20,226.35,Credit,Automated,Revenue recognition - ACCT-INV-00050,ACCT-INV-00050
+JE-00100,1100,Accounts Receivable,2026-01-20,276.04,Debit,Automated,AR posting - ACCT-INV-00050,ACCT-INV-00050
+JE-00101,4000,Revenue - Products,2026-01-27,5212.36,Credit,Automated,Revenue recognition - ACCT-INV-00051,ACCT-INV-00051
+JE-00102,1100,Accounts Receivable,2026-01-27,6356.54,Debit,Automated,AR posting - ACCT-INV-00051,ACCT-INV-00051
+JE-00103,4000,Revenue - Products,2026-01-26,530.38,Credit,Automated,Revenue recognition - ACCT-INV-00052,ACCT-INV-00052
+JE-00104,1100,Accounts Receivable,2026-01-26,646.80,Debit,Automated,AR posting - ACCT-INV-00052,ACCT-INV-00052
+JE-00105,4000,Revenue - Products,2026-01-25,4804.28,Credit,Automated,Revenue recognition - ACCT-INV-00053,ACCT-INV-00053
+JE-00106,1100,Accounts Receivable,2026-01-25,5858.88,Debit,Automated,AR posting - ACCT-INV-00053,ACCT-INV-00053
+JE-00107,4000,Revenue - Products,2026-01-02,1138.07,Credit,Automated,Revenue recognition - ACCT-INV-00054,ACCT-INV-00054
+JE-00108,1100,Accounts Receivable,2026-01-02,1387.89,Debit,Automated,AR posting - ACCT-INV-00054,ACCT-INV-00054
+JE-00109,4000,Revenue - Products,2026-01-28,225.25,Credit,Automated,Revenue recognition - ACCT-INV-00055,ACCT-INV-00055
+JE-00110,1100,Accounts Receivable,2026-01-28,274.70,Debit,Automated,AR posting - ACCT-INV-00055,ACCT-INV-00055
+JE-00111,4000,Revenue - Products,2026-01-07,5537.21,Credit,Automated,Revenue recognition - ACCT-INV-00056,ACCT-INV-00056
+JE-00112,1100,Accounts Receivable,2026-01-07,6752.70,Debit,Automated,AR posting - ACCT-INV-00056,ACCT-INV-00056
+JE-00113,4000,Revenue - Products,2026-01-18,1057.72,Credit,Automated,Revenue recognition - ACCT-INV-00057,ACCT-INV-00057
+JE-00114,1100,Accounts Receivable,2026-01-18,1289.90,Debit,Automated,AR posting - ACCT-INV-00057,ACCT-INV-00057
+JE-00115,4000,Revenue - Products,2026-01-29,1920.26,Credit,Automated,Revenue recognition - ACCT-INV-00058,ACCT-INV-00058
+JE-00116,1100,Accounts Receivable,2026-01-29,2341.78,Debit,Automated,AR posting - ACCT-INV-00058,ACCT-INV-00058
+JE-00117,4000,Revenue - Products,2026-01-28,948.28,Credit,Automated,Revenue recognition - ACCT-INV-00059,ACCT-INV-00059
+JE-00118,1100,Accounts Receivable,2026-01-28,1156.44,Debit,Automated,AR posting - ACCT-INV-00059,ACCT-INV-00059
+JE-00119,4000,Revenue - Products,2026-01-25,5153.32,Credit,Automated,Revenue recognition - ACCT-INV-00060,ACCT-INV-00060
+JE-00120,1100,Accounts Receivable,2026-01-25,6284.54,Debit,Automated,AR posting - ACCT-INV-00060,ACCT-INV-00060
+JE-00121,4000,Revenue - Products,2026-01-03,3254.69,Credit,Automated,Revenue recognition - ACCT-INV-00061,ACCT-INV-00061
+JE-00122,1100,Accounts Receivable,2026-01-03,3969.13,Debit,Automated,AR posting - ACCT-INV-00061,ACCT-INV-00061
+JE-00123,4000,Revenue - Products,2026-01-03,5187.92,Credit,Automated,Revenue recognition - ACCT-INV-00062,ACCT-INV-00062
+JE-00124,1100,Accounts Receivable,2026-01-03,6326.73,Debit,Automated,AR posting - ACCT-INV-00062,ACCT-INV-00062
+JE-00125,4000,Revenue - Products,2026-01-11,4939.50,Credit,Automated,Revenue recognition - ACCT-INV-00063,ACCT-INV-00063
+JE-00126,1100,Accounts Receivable,2026-01-11,6023.78,Debit,Automated,AR posting - ACCT-INV-00063,ACCT-INV-00063
+JE-00127,4000,Revenue - Products,2026-01-15,2387.28,Credit,Automated,Revenue recognition - ACCT-INV-00064,ACCT-INV-00064
+JE-00128,1100,Accounts Receivable,2026-01-15,2911.32,Debit,Automated,AR posting - ACCT-INV-00064,ACCT-INV-00064
+JE-00129,4000,Revenue - Products,2026-01-09,556.89,Credit,Automated,Revenue recognition - ACCT-INV-00065,ACCT-INV-00065
+JE-00130,1100,Accounts Receivable,2026-01-09,679.14,Debit,Automated,AR posting - ACCT-INV-00065,ACCT-INV-00065
+JE-00131,4000,Revenue - Products,2026-01-10,749.40,Credit,Automated,Revenue recognition - ACCT-INV-00066,ACCT-INV-00066
+JE-00132,1100,Accounts Receivable,2026-01-10,913.90,Debit,Automated,AR posting - ACCT-INV-00066,ACCT-INV-00066
+JE-00133,4000,Revenue - Products,2026-01-03,4228.12,Credit,Automated,Revenue recognition - ACCT-INV-00067,ACCT-INV-00067
+JE-00134,1100,Accounts Receivable,2026-01-03,5156.24,Debit,Automated,AR posting - ACCT-INV-00067,ACCT-INV-00067
+JE-00135,4000,Revenue - Products,2026-01-11,426.86,Credit,Automated,Revenue recognition - ACCT-INV-00068,ACCT-INV-00068
+JE-00136,1100,Accounts Receivable,2026-01-11,520.56,Debit,Automated,AR posting - ACCT-INV-00068,ACCT-INV-00068
+JE-00137,4000,Revenue - Products,2026-01-13,275.59,Credit,Automated,Revenue recognition - ACCT-INV-00069,ACCT-INV-00069
+JE-00138,1100,Accounts Receivable,2026-01-13,336.08,Debit,Automated,AR posting - ACCT-INV-00069,ACCT-INV-00069
+JE-00139,4000,Revenue - Products,2026-01-29,2630.07,Credit,Automated,Revenue recognition - ACCT-INV-00070,ACCT-INV-00070
+JE-00140,1100,Accounts Receivable,2026-01-29,3207.40,Debit,Automated,AR posting - ACCT-INV-00070,ACCT-INV-00070
+JE-00141,4000,Revenue - Products,2026-01-01,2902.59,Credit,Automated,Revenue recognition - ACCT-INV-00071,ACCT-INV-00071
+JE-00142,1100,Accounts Receivable,2026-01-01,3539.74,Debit,Automated,AR posting - ACCT-INV-00071,ACCT-INV-00071
+JE-00143,4000,Revenue - Products,2026-01-29,548.65,Credit,Automated,Revenue recognition - ACCT-INV-00072,ACCT-INV-00072
+JE-00144,1100,Accounts Receivable,2026-01-29,669.08,Debit,Automated,AR posting - ACCT-INV-00072,ACCT-INV-00072
+JE-00145,4000,Revenue - Products,2026-01-12,13152.20,Credit,Automated,Revenue recognition - ACCT-INV-00073,ACCT-INV-00073
+JE-00146,1100,Accounts Receivable,2026-01-12,16039.27,Debit,Automated,AR posting - ACCT-INV-00073,ACCT-INV-00073
+JE-00147,4000,Revenue - Products,2026-01-20,2484.60,Credit,Automated,Revenue recognition - ACCT-INV-00074,ACCT-INV-00074
+JE-00148,1100,Accounts Receivable,2026-01-20,3030.00,Debit,Automated,AR posting - ACCT-INV-00074,ACCT-INV-00074
+JE-00149,4000,Revenue - Products,2026-01-21,2047.64,Credit,Automated,Revenue recognition - ACCT-INV-00075,ACCT-INV-00075
+JE-00150,1100,Accounts Receivable,2026-01-21,2497.12,Debit,Automated,AR posting - ACCT-INV-00075,ACCT-INV-00075
+JE-00151,4000,Revenue - Products,2026-01-16,7825.26,Credit,Automated,Revenue recognition - ACCT-INV-00076,ACCT-INV-00076
+JE-00152,1100,Accounts Receivable,2026-01-16,9543.00,Debit,Automated,AR posting - ACCT-INV-00076,ACCT-INV-00076
+JE-00153,4000,Revenue - Products,2026-01-03,587.19,Credit,Automated,Revenue recognition - ACCT-INV-00077,ACCT-INV-00077
+JE-00154,1100,Accounts Receivable,2026-01-03,716.08,Debit,Automated,AR posting - ACCT-INV-00077,ACCT-INV-00077
+JE-00155,4000,Revenue - Products,2026-01-02,1123.61,Credit,Automated,Revenue recognition - ACCT-INV-00078,ACCT-INV-00078
+JE-00156,1100,Accounts Receivable,2026-01-02,1370.25,Debit,Automated,AR posting - ACCT-INV-00078,ACCT-INV-00078
+JE-00157,4000,Revenue - Products,2026-01-25,2291.97,Credit,Automated,Revenue recognition - ACCT-INV-00079,ACCT-INV-00079
+JE-00158,1100,Accounts Receivable,2026-01-25,2795.09,Debit,Automated,AR posting - ACCT-INV-00079,ACCT-INV-00079
+JE-00159,4000,Revenue - Products,2026-01-26,1936.12,Credit,Automated,Revenue recognition - ACCT-INV-00080,ACCT-INV-00080
+JE-00160,1100,Accounts Receivable,2026-01-26,2361.12,Debit,Automated,AR posting - ACCT-INV-00080,ACCT-INV-00080
+JE-00161,4000,Revenue - Products,2026-01-24,3012.20,Credit,Automated,Revenue recognition - ACCT-INV-00081,ACCT-INV-00081
+JE-00162,1100,Accounts Receivable,2026-01-24,3673.42,Debit,Automated,AR posting - ACCT-INV-00081,ACCT-INV-00081
+JE-00163,4000,Revenue - Products,2026-01-20,531.88,Credit,Automated,Revenue recognition - ACCT-INV-00082,ACCT-INV-00082
+JE-00164,1100,Accounts Receivable,2026-01-20,648.63,Debit,Automated,AR posting - ACCT-INV-00082,ACCT-INV-00082
+JE-00165,4000,Revenue - Products,2026-01-05,567.24,Credit,Automated,Revenue recognition - ACCT-INV-00083,ACCT-INV-00083
+JE-00166,1100,Accounts Receivable,2026-01-05,691.76,Debit,Automated,AR posting - ACCT-INV-00083,ACCT-INV-00083
+JE-00167,4000,Revenue - Products,2026-01-17,3447.85,Credit,Automated,Revenue recognition - ACCT-INV-00084,ACCT-INV-00084
+JE-00168,1100,Accounts Receivable,2026-01-17,4204.70,Debit,Automated,AR posting - ACCT-INV-00084,ACCT-INV-00084
+JE-00169,4000,Revenue - Products,2026-01-11,5930.52,Credit,Automated,Revenue recognition - ACCT-INV-00085,ACCT-INV-00085
+JE-00170,1100,Accounts Receivable,2026-01-11,7232.34,Debit,Automated,AR posting - ACCT-INV-00085,ACCT-INV-00085
+JE-00171,4000,Revenue - Products,2026-01-06,425.05,Credit,Automated,Revenue recognition - ACCT-INV-00086,ACCT-INV-00086
+JE-00172,1100,Accounts Receivable,2026-01-06,518.35,Debit,Automated,AR posting - ACCT-INV-00086,ACCT-INV-00086
+JE-00173,4000,Revenue - Products,2026-01-01,1208.16,Credit,Automated,Revenue recognition - ACCT-INV-00087,ACCT-INV-00087
+JE-00174,1100,Accounts Receivable,2026-01-01,1473.36,Debit,Automated,AR posting - ACCT-INV-00087,ACCT-INV-00087
+JE-00175,4000,Revenue - Products,2026-01-13,2505.72,Credit,Automated,Revenue recognition - ACCT-INV-00088,ACCT-INV-00088
+JE-00176,1100,Accounts Receivable,2026-01-13,3055.76,Debit,Automated,AR posting - ACCT-INV-00088,ACCT-INV-00088
+JE-00177,4000,Revenue - Products,2026-01-14,925.89,Credit,Automated,Revenue recognition - ACCT-INV-00089,ACCT-INV-00089
+JE-00178,1100,Accounts Receivable,2026-01-14,1129.13,Debit,Automated,AR posting - ACCT-INV-00089,ACCT-INV-00089
+JE-00179,4000,Revenue - Products,2026-01-02,5911.81,Credit,Automated,Revenue recognition - ACCT-INV-00090,ACCT-INV-00090
+JE-00180,1100,Accounts Receivable,2026-01-02,7209.53,Debit,Automated,AR posting - ACCT-INV-00090,ACCT-INV-00090
+JE-00181,4000,Revenue - Products,2026-01-10,5998.30,Credit,Automated,Revenue recognition - ACCT-INV-00091,ACCT-INV-00091
+JE-00182,1100,Accounts Receivable,2026-01-10,7315.00,Debit,Automated,AR posting - ACCT-INV-00091,ACCT-INV-00091
+JE-00183,4000,Revenue - Products,2026-01-01,1346.46,Credit,Automated,Revenue recognition - ACCT-INV-00092,ACCT-INV-00092
+JE-00184,1100,Accounts Receivable,2026-01-01,1642.02,Debit,Automated,AR posting - ACCT-INV-00092,ACCT-INV-00092
+JE-00185,4000,Revenue - Products,2026-01-25,2581.34,Credit,Automated,Revenue recognition - ACCT-INV-00093,ACCT-INV-00093
+JE-00186,1100,Accounts Receivable,2026-01-25,3147.98,Debit,Automated,AR posting - ACCT-INV-00093,ACCT-INV-00093
+JE-00187,4000,Revenue - Products,2026-01-23,3922.45,Credit,Automated,Revenue recognition - ACCT-INV-00094,ACCT-INV-00094
+JE-00188,1100,Accounts Receivable,2026-01-23,4783.47,Debit,Automated,AR posting - ACCT-INV-00094,ACCT-INV-00094
+JE-00189,4000,Revenue - Products,2026-01-03,2808.08,Credit,Automated,Revenue recognition - ACCT-INV-00095,ACCT-INV-00095
+JE-00190,1100,Accounts Receivable,2026-01-03,3424.49,Debit,Automated,AR posting - ACCT-INV-00095,ACCT-INV-00095
+JE-00191,4000,Revenue - Products,2026-01-30,4603.23,Credit,Automated,Revenue recognition - ACCT-INV-00096,ACCT-INV-00096
+JE-00192,1100,Accounts Receivable,2026-01-30,5613.70,Debit,Automated,AR posting - ACCT-INV-00096,ACCT-INV-00096
+JE-00193,4000,Revenue - Products,2026-01-19,559.75,Credit,Automated,Revenue recognition - ACCT-INV-00097,ACCT-INV-00097
+JE-00194,1100,Accounts Receivable,2026-01-19,682.62,Debit,Automated,AR posting - ACCT-INV-00097,ACCT-INV-00097
+JE-00195,4000,Revenue - Products,2026-01-11,4312.82,Credit,Automated,Revenue recognition - ACCT-INV-00098,ACCT-INV-00098
+JE-00196,1100,Accounts Receivable,2026-01-11,5259.54,Debit,Automated,AR posting - ACCT-INV-00098,ACCT-INV-00098
+JE-00197,4000,Revenue - Products,2026-01-06,1705.95,Credit,Automated,Revenue recognition - ACCT-INV-00099,ACCT-INV-00099
+JE-00198,1100,Accounts Receivable,2026-01-06,2080.43,Debit,Automated,AR posting - ACCT-INV-00099,ACCT-INV-00099
+JE-00199,4000,Revenue - Products,2026-01-13,5124.75,Credit,Automated,Revenue recognition - ACCT-INV-00100,ACCT-INV-00100
+JE-00200,1100,Accounts Receivable,2026-01-13,6249.70,Debit,Automated,AR posting - ACCT-INV-00100,ACCT-INV-00100
+JE-00201,4000,Revenue - Products,2026-01-04,1040.51,Credit,Automated,Revenue recognition - ACCT-INV-00101,ACCT-INV-00101
+JE-00202,1100,Accounts Receivable,2026-01-04,1268.92,Debit,Automated,AR posting - ACCT-INV-00101,ACCT-INV-00101
+JE-00203,4000,Revenue - Products,2026-01-12,271.38,Credit,Automated,Revenue recognition - ACCT-INV-00102,ACCT-INV-00102
+JE-00204,1100,Accounts Receivable,2026-01-12,330.95,Debit,Automated,AR posting - ACCT-INV-00102,ACCT-INV-00102
+JE-00205,4000,Revenue - Products,2026-01-01,2938.49,Credit,Automated,Revenue recognition - ACCT-INV-00103,ACCT-INV-00103
+JE-00206,1100,Accounts Receivable,2026-01-01,3583.52,Debit,Automated,AR posting - ACCT-INV-00103,ACCT-INV-00103
+JE-00207,4000,Revenue - Products,2026-01-29,2288.24,Credit,Automated,Revenue recognition - ACCT-INV-00104,ACCT-INV-00104
+JE-00208,1100,Accounts Receivable,2026-01-29,2790.54,Debit,Automated,AR posting - ACCT-INV-00104,ACCT-INV-00104
+JE-00209,4000,Revenue - Products,2026-01-16,1948.16,Credit,Automated,Revenue recognition - ACCT-INV-00105,ACCT-INV-00105
+JE-00210,1100,Accounts Receivable,2026-01-16,2375.80,Debit,Automated,AR posting - ACCT-INV-00105,ACCT-INV-00105
+JE-00211,4000,Revenue - Products,2026-01-30,1538.11,Credit,Automated,Revenue recognition - ACCT-INV-00106,ACCT-INV-00106
+JE-00212,1100,Accounts Receivable,2026-01-30,1875.74,Debit,Automated,AR posting - ACCT-INV-00106,ACCT-INV-00106
+JE-00213,4000,Revenue - Products,2026-01-20,3252.08,Credit,Automated,Revenue recognition - ACCT-INV-00107,ACCT-INV-00107
+JE-00214,1100,Accounts Receivable,2026-01-20,3965.95,Debit,Automated,AR posting - ACCT-INV-00107,ACCT-INV-00107
+JE-00215,4000,Revenue - Products,2026-01-02,850.55,Credit,Automated,Revenue recognition - ACCT-INV-00108,ACCT-INV-00108
+JE-00216,1100,Accounts Receivable,2026-01-02,1037.26,Debit,Automated,AR posting - ACCT-INV-00108,ACCT-INV-00108
+JE-00217,4000,Revenue - Products,2026-01-21,5956.50,Credit,Automated,Revenue recognition - ACCT-INV-00109,ACCT-INV-00109
+JE-00218,1100,Accounts Receivable,2026-01-21,7264.02,Debit,Automated,AR posting - ACCT-INV-00109,ACCT-INV-00109
+JE-00219,4000,Revenue - Products,2026-01-20,2520.51,Credit,Automated,Revenue recognition - ACCT-INV-00110,ACCT-INV-00110
+JE-00220,1100,Accounts Receivable,2026-01-20,3073.79,Debit,Automated,AR posting - ACCT-INV-00110,ACCT-INV-00110
+JE-00221,4000,Revenue - Products,2026-01-19,869.87,Credit,Automated,Revenue recognition - ACCT-INV-00111,ACCT-INV-00111
+JE-00222,1100,Accounts Receivable,2026-01-19,1060.82,Debit,Automated,AR posting - ACCT-INV-00111,ACCT-INV-00111
+JE-00223,4000,Revenue - Products,2026-01-02,800.40,Credit,Automated,Revenue recognition - ACCT-INV-00112,ACCT-INV-00112
+JE-00224,1100,Accounts Receivable,2026-01-02,976.10,Debit,Automated,AR posting - ACCT-INV-00112,ACCT-INV-00112
+JE-00225,4000,Revenue - Products,2026-01-11,2514.23,Credit,Automated,Revenue recognition - ACCT-INV-00113,ACCT-INV-00113
+JE-00226,1100,Accounts Receivable,2026-01-11,3066.14,Debit,Automated,AR posting - ACCT-INV-00113,ACCT-INV-00113
+JE-00227,4000,Revenue - Products,2026-01-27,2747.54,Credit,Automated,Revenue recognition - ACCT-INV-00114,ACCT-INV-00114
+JE-00228,1100,Accounts Receivable,2026-01-27,3350.66,Debit,Automated,AR posting - ACCT-INV-00114,ACCT-INV-00114
+JE-00229,4000,Revenue - Products,2026-01-17,3040.58,Credit,Automated,Revenue recognition - ACCT-INV-00115,ACCT-INV-00115
+JE-00230,1100,Accounts Receivable,2026-01-17,3708.03,Debit,Automated,AR posting - ACCT-INV-00115,ACCT-INV-00115
+JE-00231,4000,Revenue - Products,2026-01-02,436.82,Credit,Automated,Revenue recognition - ACCT-INV-00116,ACCT-INV-00116
+JE-00232,1100,Accounts Receivable,2026-01-02,532.71,Debit,Automated,AR posting - ACCT-INV-00116,ACCT-INV-00116
+JE-00233,4000,Revenue - Products,2026-01-28,3879.20,Credit,Automated,Revenue recognition - ACCT-INV-00117,ACCT-INV-00117
+JE-00234,1100,Accounts Receivable,2026-01-28,4730.73,Debit,Automated,AR posting - ACCT-INV-00117,ACCT-INV-00117
+JE-00235,4000,Revenue - Products,2026-01-05,1154.26,Credit,Automated,Revenue recognition - ACCT-INV-00118,ACCT-INV-00118
+JE-00236,1100,Accounts Receivable,2026-01-05,1407.64,Debit,Automated,AR posting - ACCT-INV-00118,ACCT-INV-00118
+JE-00237,4000,Revenue - Products,2026-01-23,3941.74,Credit,Automated,Revenue recognition - ACCT-INV-00119,ACCT-INV-00119
+JE-00238,1100,Accounts Receivable,2026-01-23,4807.00,Debit,Automated,AR posting - ACCT-INV-00119,ACCT-INV-00119
+JE-00239,4000,Revenue - Products,2026-01-31,3488.13,Credit,Automated,Revenue recognition - ACCT-INV-00120,ACCT-INV-00120
+JE-00240,1100,Accounts Receivable,2026-01-31,4253.82,Debit,Automated,AR posting - ACCT-INV-00120,ACCT-INV-00120
+JE-00241,4000,Revenue - Products,2026-01-08,1974.86,Credit,Automated,Revenue recognition - ACCT-INV-00121,ACCT-INV-00121
+JE-00242,1100,Accounts Receivable,2026-01-08,2408.37,Debit,Automated,AR posting - ACCT-INV-00121,ACCT-INV-00121
+JE-00243,4000,Revenue - Products,2026-01-07,1658.42,Credit,Automated,Revenue recognition - ACCT-INV-00122,ACCT-INV-00122
+JE-00244,1100,Accounts Receivable,2026-01-07,2022.46,Debit,Automated,AR posting - ACCT-INV-00122,ACCT-INV-00122
+JE-00245,4000,Revenue - Products,2026-01-01,2772.58,Credit,Automated,Revenue recognition - ACCT-INV-00123,ACCT-INV-00123
+JE-00246,1100,Accounts Receivable,2026-01-01,3381.20,Debit,Automated,AR posting - ACCT-INV-00123,ACCT-INV-00123
+JE-00247,4000,Revenue - Products,2026-01-29,6383.25,Credit,Automated,Revenue recognition - ACCT-INV-00124,ACCT-INV-00124
+JE-00248,1100,Accounts Receivable,2026-01-29,7784.45,Debit,Automated,AR posting - ACCT-INV-00124,ACCT-INV-00124
+JE-00249,4000,Revenue - Products,2026-01-26,44.35,Credit,Automated,Revenue recognition - ACCT-INV-00125,ACCT-INV-00125
+JE-00250,1100,Accounts Receivable,2026-01-26,54.08,Debit,Automated,AR posting - ACCT-INV-00125,ACCT-INV-00125
+JE-00251,4000,Revenue - Products,2026-01-03,2594.96,Credit,Automated,Revenue recognition - ACCT-INV-00126,ACCT-INV-00126
+JE-00252,1100,Accounts Receivable,2026-01-03,3164.59,Debit,Automated,AR posting - ACCT-INV-00126,ACCT-INV-00126
+JE-00253,4000,Revenue - Products,2026-01-29,2914.81,Credit,Automated,Revenue recognition - ACCT-INV-00127,ACCT-INV-00127
+JE-00254,1100,Accounts Receivable,2026-01-29,3554.65,Debit,Automated,AR posting - ACCT-INV-00127,ACCT-INV-00127
+JE-00255,4000,Revenue - Products,2026-01-07,3228.87,Credit,Automated,Revenue recognition - ACCT-INV-00128,ACCT-INV-00128
+JE-00256,1100,Accounts Receivable,2026-01-07,3937.65,Debit,Automated,AR posting - ACCT-INV-00128,ACCT-INV-00128
+JE-00257,4000,Revenue - Products,2026-01-27,1288.57,Credit,Automated,Revenue recognition - ACCT-INV-00129,ACCT-INV-00129
+JE-00258,1100,Accounts Receivable,2026-01-27,1571.43,Debit,Automated,AR posting - ACCT-INV-00129,ACCT-INV-00129
+JE-00259,4000,Revenue - Products,2026-01-07,1980.89,Credit,Automated,Revenue recognition - ACCT-INV-00130,ACCT-INV-00130
+JE-00260,1100,Accounts Receivable,2026-01-07,2415.72,Debit,Automated,AR posting - ACCT-INV-00130,ACCT-INV-00130
+JE-00261,4000,Revenue - Products,2026-01-26,7694.83,Credit,Automated,Revenue recognition - ACCT-INV-00131,ACCT-INV-00131
+JE-00262,1100,Accounts Receivable,2026-01-26,9383.94,Debit,Automated,AR posting - ACCT-INV-00131,ACCT-INV-00131
+JE-00263,4000,Revenue - Products,2026-01-06,3410.37,Credit,Automated,Revenue recognition - ACCT-INV-00132,ACCT-INV-00132
+JE-00264,1100,Accounts Receivable,2026-01-06,4158.99,Debit,Automated,AR posting - ACCT-INV-00132,ACCT-INV-00132
+JE-00265,4000,Revenue - Products,2026-01-22,1396.74,Credit,Automated,Revenue recognition - ACCT-INV-00133,ACCT-INV-00133
+JE-00266,1100,Accounts Receivable,2026-01-22,1703.34,Debit,Automated,AR posting - ACCT-INV-00133,ACCT-INV-00133
+JE-00267,4000,Revenue - Products,2026-01-25,6613.10,Credit,Automated,Revenue recognition - ACCT-INV-00134,ACCT-INV-00134
+JE-00268,1100,Accounts Receivable,2026-01-25,8064.75,Debit,Automated,AR posting - ACCT-INV-00134,ACCT-INV-00134
+JE-00269,4000,Revenue - Products,2026-01-02,3204.74,Credit,Automated,Revenue recognition - ACCT-INV-00135,ACCT-INV-00135
+JE-00270,1100,Accounts Receivable,2026-01-02,3908.22,Debit,Automated,AR posting - ACCT-INV-00135,ACCT-INV-00135
+JE-00271,4000,Revenue - Products,2026-01-14,2698.12,Credit,Automated,Revenue recognition - ACCT-INV-00136,ACCT-INV-00136
+JE-00272,1100,Accounts Receivable,2026-01-14,3290.39,Debit,Automated,AR posting - ACCT-INV-00136,ACCT-INV-00136
+JE-00273,4000,Revenue - Products,2026-01-30,1971.69,Credit,Automated,Revenue recognition - ACCT-INV-00137,ACCT-INV-00137
+JE-00274,1100,Accounts Receivable,2026-01-30,2404.50,Debit,Automated,AR posting - ACCT-INV-00137,ACCT-INV-00137
+JE-00275,4000,Revenue - Products,2026-01-11,1878.76,Credit,Automated,Revenue recognition - ACCT-INV-00138,ACCT-INV-00138
+JE-00276,1100,Accounts Receivable,2026-01-11,2291.17,Debit,Automated,AR posting - ACCT-INV-00138,ACCT-INV-00138
+JE-00277,4000,Revenue - Products,2026-01-19,4263.80,Credit,Automated,Revenue recognition - ACCT-INV-00139,ACCT-INV-00139
+JE-00278,1100,Accounts Receivable,2026-01-19,5199.75,Debit,Automated,AR posting - ACCT-INV-00139,ACCT-INV-00139
+JE-00279,4000,Revenue - Products,2026-01-02,1869.81,Credit,Automated,Revenue recognition - ACCT-INV-00140,ACCT-INV-00140
+JE-00280,1100,Accounts Receivable,2026-01-02,2280.25,Debit,Automated,AR posting - ACCT-INV-00140,ACCT-INV-00140
+JE-00281,4000,Revenue - Products,2026-01-23,3158.41,Credit,Automated,Revenue recognition - ACCT-INV-00141,ACCT-INV-00141
+JE-00282,1100,Accounts Receivable,2026-01-23,3851.72,Debit,Automated,AR posting - ACCT-INV-00141,ACCT-INV-00141
+JE-00283,4000,Revenue - Products,2026-01-10,4300.30,Credit,Automated,Revenue recognition - ACCT-INV-00142,ACCT-INV-00142
+JE-00284,1100,Accounts Receivable,2026-01-10,5244.27,Debit,Automated,AR posting - ACCT-INV-00142,ACCT-INV-00142
+JE-00285,4000,Revenue - Products,2026-01-09,3602.60,Credit,Automated,Revenue recognition - ACCT-INV-00143,ACCT-INV-00143
+JE-00286,1100,Accounts Receivable,2026-01-09,4393.41,Debit,Automated,AR posting - ACCT-INV-00143,ACCT-INV-00143
+JE-00287,4000,Revenue - Products,2026-01-27,1187.91,Credit,Automated,Revenue recognition - ACCT-INV-00144,ACCT-INV-00144
+JE-00288,1100,Accounts Receivable,2026-01-27,1448.67,Debit,Automated,AR posting - ACCT-INV-00144,ACCT-INV-00144
+JE-00289,4000,Revenue - Products,2026-01-17,1532.13,Credit,Automated,Revenue recognition - ACCT-INV-00145,ACCT-INV-00145
+JE-00290,1100,Accounts Receivable,2026-01-17,1868.45,Debit,Automated,AR posting - ACCT-INV-00145,ACCT-INV-00145
+JE-00291,4000,Revenue - Products,2026-01-23,2914.84,Credit,Automated,Revenue recognition - ACCT-INV-00146,ACCT-INV-00146
+JE-00292,1100,Accounts Receivable,2026-01-23,3554.68,Debit,Automated,AR posting - ACCT-INV-00146,ACCT-INV-00146
+JE-00293,4000,Revenue - Products,2026-01-22,1535.73,Credit,Automated,Revenue recognition - ACCT-INV-00147,ACCT-INV-00147
+JE-00294,1100,Accounts Receivable,2026-01-22,1872.84,Debit,Automated,AR posting - ACCT-INV-00147,ACCT-INV-00147
+JE-00295,4000,Revenue - Products,2026-01-06,3185.58,Credit,Automated,Revenue recognition - ACCT-INV-00148,ACCT-INV-00148
+JE-00296,1100,Accounts Receivable,2026-01-06,3884.85,Debit,Automated,AR posting - ACCT-INV-00148,ACCT-INV-00148
+JE-00297,4000,Revenue - Products,2026-01-28,4443.34,Credit,Automated,Revenue recognition - ACCT-INV-00149,ACCT-INV-00149
+JE-00298,1100,Accounts Receivable,2026-01-28,5418.71,Debit,Automated,AR posting - ACCT-INV-00149,ACCT-INV-00149
+JE-00299,4000,Revenue - Products,2026-01-22,1038.19,Credit,Automated,Revenue recognition - ACCT-INV-00150,ACCT-INV-00150
+JE-00300,1100,Accounts Receivable,2026-01-22,1266.09,Debit,Automated,AR posting - ACCT-INV-00150,ACCT-INV-00150
+JE-00301,4000,Revenue - Products,2026-01-26,969.16,Credit,Automated,Revenue recognition - ACCT-INV-00151,ACCT-INV-00151
+JE-00302,1100,Accounts Receivable,2026-01-26,1181.90,Debit,Automated,AR posting - ACCT-INV-00151,ACCT-INV-00151
+JE-00303,4000,Revenue - Products,2026-01-23,4968.18,Credit,Automated,Revenue recognition - ACCT-INV-00152,ACCT-INV-00152
+JE-00304,1100,Accounts Receivable,2026-01-23,6058.76,Debit,Automated,AR posting - ACCT-INV-00152,ACCT-INV-00152
+JE-00305,4000,Revenue - Products,2026-01-17,2933.86,Credit,Automated,Revenue recognition - ACCT-INV-00153,ACCT-INV-00153
+JE-00306,1100,Accounts Receivable,2026-01-17,3577.88,Debit,Automated,AR posting - ACCT-INV-00153,ACCT-INV-00153
+JE-00307,4000,Revenue - Products,2026-01-21,1673.78,Credit,Automated,Revenue recognition - ACCT-INV-00154,ACCT-INV-00154
+JE-00308,1100,Accounts Receivable,2026-01-21,2041.19,Debit,Automated,AR posting - ACCT-INV-00154,ACCT-INV-00154
+JE-00309,4000,Revenue - Products,2026-01-29,2773.86,Credit,Automated,Revenue recognition - ACCT-INV-00155,ACCT-INV-00155
+JE-00310,1100,Accounts Receivable,2026-01-29,3382.75,Debit,Automated,AR posting - ACCT-INV-00155,ACCT-INV-00155
+JE-00311,4000,Revenue - Products,2026-01-05,1181.19,Credit,Automated,Revenue recognition - ACCT-INV-00156,ACCT-INV-00156
+JE-00312,1100,Accounts Receivable,2026-01-05,1440.48,Debit,Automated,AR posting - ACCT-INV-00156,ACCT-INV-00156
+JE-00313,4000,Revenue - Products,2026-01-30,2770.89,Credit,Automated,Revenue recognition - ACCT-INV-00157,ACCT-INV-00157
+JE-00314,1100,Accounts Receivable,2026-01-30,3379.13,Debit,Automated,AR posting - ACCT-INV-00157,ACCT-INV-00157
+JE-00315,4000,Revenue - Products,2026-01-26,3110.87,Credit,Automated,Revenue recognition - ACCT-INV-00158,ACCT-INV-00158
+JE-00316,1100,Accounts Receivable,2026-01-26,3793.74,Debit,Automated,AR posting - ACCT-INV-00158,ACCT-INV-00158
+JE-00317,4000,Revenue - Products,2026-01-09,4432.84,Credit,Automated,Revenue recognition - ACCT-INV-00159,ACCT-INV-00159
+JE-00318,1100,Accounts Receivable,2026-01-09,5405.90,Debit,Automated,AR posting - ACCT-INV-00159,ACCT-INV-00159
+JE-00319,4000,Revenue - Products,2026-01-12,1241.96,Credit,Automated,Revenue recognition - ACCT-INV-00160,ACCT-INV-00160
+JE-00320,1100,Accounts Receivable,2026-01-12,1514.58,Debit,Automated,AR posting - ACCT-INV-00160,ACCT-INV-00160
+JE-00321,4000,Revenue - Products,2026-01-19,5239.56,Credit,Automated,Revenue recognition - ACCT-INV-00161,ACCT-INV-00161
+JE-00322,1100,Accounts Receivable,2026-01-19,6389.71,Debit,Automated,AR posting - ACCT-INV-00161,ACCT-INV-00161
+JE-00323,4000,Revenue - Products,2026-01-05,3617.10,Credit,Automated,Revenue recognition - ACCT-INV-00162,ACCT-INV-00162
+JE-00324,1100,Accounts Receivable,2026-01-05,4411.10,Debit,Automated,AR posting - ACCT-INV-00162,ACCT-INV-00162
+JE-00325,4000,Revenue - Products,2026-01-06,2335.33,Credit,Automated,Revenue recognition - ACCT-INV-00163,ACCT-INV-00163
+JE-00326,1100,Accounts Receivable,2026-01-06,2847.96,Debit,Automated,AR posting - ACCT-INV-00163,ACCT-INV-00163
+JE-00327,4000,Revenue - Products,2026-01-11,220.09,Credit,Automated,Revenue recognition - ACCT-INV-00164,ACCT-INV-00164
+JE-00328,1100,Accounts Receivable,2026-01-11,268.40,Debit,Automated,AR posting - ACCT-INV-00164,ACCT-INV-00164
+JE-00329,4000,Revenue - Products,2026-01-25,830.45,Credit,Automated,Revenue recognition - ACCT-INV-00165,ACCT-INV-00165
+JE-00330,1100,Accounts Receivable,2026-01-25,1012.74,Debit,Automated,AR posting - ACCT-INV-00165,ACCT-INV-00165
+JE-00331,4000,Revenue - Products,2026-01-21,3113.44,Credit,Automated,Revenue recognition - ACCT-INV-00166,ACCT-INV-00166
+JE-00332,1100,Accounts Receivable,2026-01-21,3796.88,Debit,Automated,AR posting - ACCT-INV-00166,ACCT-INV-00166
+JE-00333,4000,Revenue - Products,2026-01-29,2358.02,Credit,Automated,Revenue recognition - ACCT-INV-00167,ACCT-INV-00167
+JE-00334,1100,Accounts Receivable,2026-01-29,2875.63,Debit,Automated,AR posting - ACCT-INV-00167,ACCT-INV-00167
+JE-00335,4000,Revenue - Products,2026-01-10,2909.94,Credit,Automated,Revenue recognition - ACCT-INV-00168,ACCT-INV-00168
+JE-00336,1100,Accounts Receivable,2026-01-10,3548.71,Debit,Automated,AR posting - ACCT-INV-00168,ACCT-INV-00168
+JE-00337,4000,Revenue - Products,2026-01-10,2593.72,Credit,Automated,Revenue recognition - ACCT-INV-00169,ACCT-INV-00169
+JE-00338,1100,Accounts Receivable,2026-01-10,3163.07,Debit,Automated,AR posting - ACCT-INV-00169,ACCT-INV-00169
+JE-00339,4000,Revenue - Products,2026-01-06,3274.24,Credit,Automated,Revenue recognition - ACCT-INV-00170,ACCT-INV-00170
+JE-00340,1100,Accounts Receivable,2026-01-06,3992.97,Debit,Automated,AR posting - ACCT-INV-00170,ACCT-INV-00170
+JE-00341,4000,Revenue - Products,2026-01-21,1391.54,Credit,Automated,Revenue recognition - ACCT-INV-00171,ACCT-INV-00171
+JE-00342,1100,Accounts Receivable,2026-01-21,1697.00,Debit,Automated,AR posting - ACCT-INV-00171,ACCT-INV-00171
+JE-00343,4000,Revenue - Products,2026-01-02,2259.02,Credit,Automated,Revenue recognition - ACCT-INV-00172,ACCT-INV-00172
+JE-00344,1100,Accounts Receivable,2026-01-02,2754.90,Debit,Automated,AR posting - ACCT-INV-00172,ACCT-INV-00172
+JE-00345,4000,Revenue - Products,2026-01-23,2339.89,Credit,Automated,Revenue recognition - ACCT-INV-00173,ACCT-INV-00173
+JE-00346,1100,Accounts Receivable,2026-01-23,2853.52,Debit,Automated,AR posting - ACCT-INV-00173,ACCT-INV-00173
+JE-00347,4000,Revenue - Products,2026-01-17,1393.16,Credit,Automated,Revenue recognition - ACCT-INV-00174,ACCT-INV-00174
+JE-00348,1100,Accounts Receivable,2026-01-17,1698.98,Debit,Automated,AR posting - ACCT-INV-00174,ACCT-INV-00174
+JE-00349,4000,Revenue - Products,2026-01-16,1433.52,Credit,Automated,Revenue recognition - ACCT-INV-00175,ACCT-INV-00175
+JE-00350,1100,Accounts Receivable,2026-01-16,1748.20,Debit,Automated,AR posting - ACCT-INV-00175,ACCT-INV-00175
+JE-00351,4000,Revenue - Products,2026-01-12,6403.87,Credit,Automated,Revenue recognition - ACCT-INV-00176,ACCT-INV-00176
+JE-00352,1100,Accounts Receivable,2026-01-12,7809.60,Debit,Automated,AR posting - ACCT-INV-00176,ACCT-INV-00176
+JE-00353,4000,Revenue - Products,2026-01-03,138.68,Credit,Automated,Revenue recognition - ACCT-INV-00177,ACCT-INV-00177
+JE-00354,1100,Accounts Receivable,2026-01-03,169.12,Debit,Automated,AR posting - ACCT-INV-00177,ACCT-INV-00177
+JE-00355,4000,Revenue - Products,2026-01-25,4383.53,Credit,Automated,Revenue recognition - ACCT-INV-00178,ACCT-INV-00178
+JE-00356,1100,Accounts Receivable,2026-01-25,5345.77,Debit,Automated,AR posting - ACCT-INV-00178,ACCT-INV-00178
+JE-00357,4000,Revenue - Products,2026-01-28,2739.37,Credit,Automated,Revenue recognition - ACCT-INV-00179,ACCT-INV-00179
+JE-00358,1100,Accounts Receivable,2026-01-28,3340.70,Debit,Automated,AR posting - ACCT-INV-00179,ACCT-INV-00179
+JE-00359,4000,Revenue - Products,2026-01-22,2681.29,Credit,Automated,Revenue recognition - ACCT-INV-00180,ACCT-INV-00180
+JE-00360,1100,Accounts Receivable,2026-01-22,3269.87,Debit,Automated,AR posting - ACCT-INV-00180,ACCT-INV-00180
+JE-00361,4000,Revenue - Products,2026-01-12,2760.66,Credit,Automated,Revenue recognition - ACCT-INV-00181,ACCT-INV-00181
+JE-00362,1100,Accounts Receivable,2026-01-12,3366.66,Debit,Automated,AR posting - ACCT-INV-00181,ACCT-INV-00181
+JE-00363,4000,Revenue - Products,2026-01-28,1383.90,Credit,Automated,Revenue recognition - ACCT-INV-00182,ACCT-INV-00182
+JE-00364,1100,Accounts Receivable,2026-01-28,1687.68,Debit,Automated,AR posting - ACCT-INV-00182,ACCT-INV-00182
+JE-00365,4000,Revenue - Products,2026-01-16,5059.65,Credit,Automated,Revenue recognition - ACCT-INV-00183,ACCT-INV-00183
+JE-00366,1100,Accounts Receivable,2026-01-16,6170.31,Debit,Automated,AR posting - ACCT-INV-00183,ACCT-INV-00183
+JE-00367,4000,Revenue - Products,2026-01-04,3699.41,Credit,Automated,Revenue recognition - ACCT-INV-00184,ACCT-INV-00184
+JE-00368,1100,Accounts Receivable,2026-01-04,4511.47,Debit,Automated,AR posting - ACCT-INV-00184,ACCT-INV-00184
+JE-00369,4000,Revenue - Products,2026-01-28,1630.27,Credit,Automated,Revenue recognition - ACCT-INV-00185,ACCT-INV-00185
+JE-00370,1100,Accounts Receivable,2026-01-28,1988.14,Debit,Automated,AR posting - ACCT-INV-00185,ACCT-INV-00185
+JE-00371,4000,Revenue - Products,2026-01-13,1229.67,Credit,Automated,Revenue recognition - ACCT-INV-00186,ACCT-INV-00186
+JE-00372,1100,Accounts Receivable,2026-01-13,1499.60,Debit,Automated,AR posting - ACCT-INV-00186,ACCT-INV-00186
+JE-00373,4000,Revenue - Products,2026-01-28,4941.86,Credit,Automated,Revenue recognition - ACCT-INV-00187,ACCT-INV-00187
+JE-00374,1100,Accounts Receivable,2026-01-28,6026.66,Debit,Automated,AR posting - ACCT-INV-00187,ACCT-INV-00187
+JE-00375,4000,Revenue - Products,2026-01-18,5963.73,Credit,Automated,Revenue recognition - ACCT-INV-00188,ACCT-INV-00188
+JE-00376,1100,Accounts Receivable,2026-01-18,7272.84,Debit,Automated,AR posting - ACCT-INV-00188,ACCT-INV-00188
+JE-00377,4000,Revenue - Products,2026-01-16,932.06,Credit,Automated,Revenue recognition - ACCT-INV-00189,ACCT-INV-00189
+JE-00378,1100,Accounts Receivable,2026-01-16,1136.66,Debit,Automated,AR posting - ACCT-INV-00189,ACCT-INV-00189
+JE-00379,4000,Revenue - Products,2026-01-18,8168.43,Credit,Automated,Revenue recognition - ACCT-INV-00190,ACCT-INV-00190
+JE-00380,1100,Accounts Receivable,2026-01-18,9961.50,Debit,Automated,AR posting - ACCT-INV-00190,ACCT-INV-00190
+JE-00381,4000,Revenue - Products,2026-01-10,4924.87,Credit,Automated,Revenue recognition - ACCT-INV-00191,ACCT-INV-00191
+JE-00382,1100,Accounts Receivable,2026-01-10,6005.94,Debit,Automated,AR posting - ACCT-INV-00191,ACCT-INV-00191
+JE-00383,4000,Revenue - Products,2026-01-20,3041.54,Credit,Automated,Revenue recognition - ACCT-INV-00192,ACCT-INV-00192
+JE-00384,1100,Accounts Receivable,2026-01-20,3709.20,Debit,Automated,AR posting - ACCT-INV-00192,ACCT-INV-00192
+JE-00385,4000,Revenue - Products,2026-01-27,3120.50,Credit,Automated,Revenue recognition - ACCT-INV-00193,ACCT-INV-00193
+JE-00386,1100,Accounts Receivable,2026-01-27,3805.49,Debit,Automated,AR posting - ACCT-INV-00193,ACCT-INV-00193
+JE-00387,4000,Revenue - Products,2026-01-24,2259.46,Credit,Automated,Revenue recognition - ACCT-INV-00194,ACCT-INV-00194
+JE-00388,1100,Accounts Receivable,2026-01-24,2755.44,Debit,Automated,AR posting - ACCT-INV-00194,ACCT-INV-00194
+JE-00389,4000,Revenue - Products,2026-01-23,1646.40,Credit,Automated,Revenue recognition - ACCT-INV-00195,ACCT-INV-00195
+JE-00390,1100,Accounts Receivable,2026-01-23,2007.80,Debit,Automated,AR posting - ACCT-INV-00195,ACCT-INV-00195
+JE-00391,4000,Revenue - Products,2026-01-31,6172.81,Credit,Automated,Revenue recognition - ACCT-INV-00196,ACCT-INV-00196
+JE-00392,1100,Accounts Receivable,2026-01-31,7527.82,Debit,Automated,AR posting - ACCT-INV-00196,ACCT-INV-00196
+JE-00393,4000,Revenue - Products,2026-01-24,2332.10,Credit,Automated,Revenue recognition - ACCT-INV-00197,ACCT-INV-00197
+JE-00394,1100,Accounts Receivable,2026-01-24,2844.02,Debit,Automated,AR posting - ACCT-INV-00197,ACCT-INV-00197
+JE-00395,4000,Revenue - Products,2026-01-14,4908.60,Credit,Automated,Revenue recognition - ACCT-INV-00198,ACCT-INV-00198
+JE-00396,1100,Accounts Receivable,2026-01-14,5986.10,Debit,Automated,AR posting - ACCT-INV-00198,ACCT-INV-00198
+JE-00397,4000,Revenue - Products,2026-01-17,2849.12,Credit,Automated,Revenue recognition - ACCT-INV-00199,ACCT-INV-00199
+JE-00398,1100,Accounts Receivable,2026-01-17,3474.54,Debit,Automated,AR posting - ACCT-INV-00199,ACCT-INV-00199
+JE-00399,4000,Revenue - Products,2026-01-22,3769.97,Credit,Automated,Revenue recognition - ACCT-INV-00200,ACCT-INV-00200
+JE-00400,1100,Accounts Receivable,2026-01-22,4597.53,Debit,Automated,AR posting - ACCT-INV-00200,ACCT-INV-00200
+JE-00401,6400,Professional Services,2026-01-22,36568.17,Debit,Manual,Accrual - consulting fees,
+JE-00402,6800,Utilities,2026-01-05,21209.99,Credit,Manual,Accrual - utilities,
+JE-00403,6600,Insurance,2026-01-06,122256.18,Debit,Manual,Prepaid insurance amortization,
+JE-00404,6500,Depreciation & Amortization,2026-01-01,33029.65,Credit,Manual,Depreciation - fixed assets,
+JE-00405,4200,Revenue - Returns & Allowances,2026-01-02,105075.67,Credit,Manual,Bad debt reserve adjustment,
+JE-00406,6000,Salaries & Wages,2026-01-09,28648.80,Debit,Manual,Payroll accrual,
+JE-00407,6200,Marketing & Advertising,2026-01-04,120396.46,Credit,Manual,Marketing accrual,
+JE-00408,6100,Rent & Occupancy,2026-01-31,111247.14,Debit,Manual,Lease payment allocation,
+JE-00409,6900,Miscellaneous Expense,2026-01-28,18056.90,Credit,Manual,Intercompany allocation,
+JE-00410,6900,Miscellaneous Expense,2026-01-25,27246.52,Credit,Manual,FX revaluation,
+JE-00411,2100,Accrued Liabilities,2026-01-20,90278.49,Credit,Manual,Tax provision adjustment,
+JE-00412,5000,Cost of Goods Sold,2026-01-17,88428.26,Debit,Manual,Inventory write-down,
+JE-00413,2200,Deferred Revenue,2026-01-17,99494.71,Debit,Manual,Deferred revenue recognition,
+JE-00414,6000,Salaries & Wages,2026-01-18,21079.58,Debit,Manual,Bonus accrual,
+JE-00415,6000,Salaries & Wages,2026-01-29,13266.89,Credit,Manual,Commission accrual,

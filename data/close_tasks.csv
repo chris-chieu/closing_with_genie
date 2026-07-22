@@ -1,0 +1,19 @@
+task_id,task_name,owner,due_date,status,completed_date
+TASK-001,Subledger Reconciliation - AR,Sarah Chen,2026-02-01,Completed,2026-02-03
+TASK-002,Subledger Reconciliation - AP,Mike Rodriguez,2026-02-02,Completed,2026-02-03
+TASK-003,Subledger Reconciliation - Inventory,Sarah Chen,2026-02-02,Not Started,
+TASK-004,Bank Reconciliation,Sarah Chen,2026-02-02,In Progress,
+TASK-005,Intercompany Elimination,Priya Patel,2026-02-03,Completed,2026-02-01
+TASK-006,Revenue Recognition Review,David Kim,2026-02-03,Completed,2026-02-02
+TASK-007,Accrual Postings,Lisa Thompson,2026-02-04,Completed,2026-02-02
+TASK-008,Prepaid Amortization,Priya Patel,2026-02-01,Completed,2026-02-03
+TASK-009,Depreciation Run,Sarah Chen,2026-02-05,Completed,2026-02-03
+TASK-010,Payroll Accruals,Lisa Thompson,2026-02-01,Completed,2026-02-02
+TASK-011,Tax Provision,Mike Rodriguez,2026-02-01,Completed,2026-02-02
+TASK-012,Foreign Currency Revaluation,Mike Rodriguez,2026-02-05,Not Started,
+TASK-013,Bad Debt Reserve Adjustment,James Wilson,2026-02-04,In Progress,
+TASK-014,Inventory Valuation,James Wilson,2026-02-02,In Progress,
+TASK-015,Lease Accounting Entries,Lisa Thompson,2026-02-03,In Progress,
+TASK-016,Equity Roll-forward,James Wilson,2026-02-04,Completed,2026-02-02
+TASK-017,Management Reporting Pack,David Kim,2026-02-03,In Progress,
+TASK-018,Final P&L Review,Sarah Chen,2026-02-05,Completed,2026-02-01

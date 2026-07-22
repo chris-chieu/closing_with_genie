@@ -1,0 +1,101 @@
+product_id,product_name,category,unit_price,cost_price
+PROD-0001,Thought Beauty PJ-171,Beauty & Personal Care,33.55,19.42
+PROD-0002,Moment Toys AE-484,Toys & Games,368.34,182.00
+PROD-0003,Marriage Automotive JY-378,Automotive,492.35,214.02
+PROD-0004,Cut Automotive ER-982,Automotive,107.19,44.30
+PROD-0005,Spring Office RA-658,Office Supplies,15.82,10.72
+PROD-0006,Fear Health QF-499,Health & Wellness,348.13,237.45
+PROD-0007,Tree Sports EW-278,Sports & Outdoors,191.65,80.68
+PROD-0008,Go Toys DU-886,Toys & Games,317.23,190.03
+PROD-0009,True Apparel YO-339,Apparel,364.08,178.43
+PROD-0010,Total Beauty VE-605,Beauty & Personal Care,338.44,168.49
+PROD-0011,Season Beauty FC-662,Beauty & Personal Care,283.89,129.89
+PROD-0012,Card Office GC-895,Office Supplies,343.50,230.43
+PROD-0013,Black Automotive UJ-870,Automotive,291.02,151.86
+PROD-0014,It Electronics YQ-217,Electronics,162.38,75.19
+PROD-0015,Ground Automotive VR-961,Automotive,309.23,153.59
+PROD-0016,Town Food OT-865,Food & Beverage,229.45,106.49
+PROD-0017,Very Food NE-780,Food & Beverage,399.96,275.15
+PROD-0018,Easy Home BG-431,Home & Kitchen,334.54,162.30
+PROD-0019,Soon Automotive ST-172,Automotive,177.57,114.63
+PROD-0020,Well Sports YD-005,Sports & Outdoors,341.31,159.53
+PROD-0021,Finally Sports JP-556,Sports & Outdoors,86.47,35.79
+PROD-0022,Nice Food KL-692,Food & Beverage,311.47,196.40
+PROD-0023,Bar Food RP-969,Food & Beverage,216.00,127.21
+PROD-0024,Modern Sports DO-923,Sports & Outdoors,363.40,187.22
+PROD-0025,Environmental Office ZD-740,Office Supplies,133.33,79.57
+PROD-0026,Wear Electronics EC-482,Electronics,447.94,294.80
+PROD-0027,You Apparel OB-594,Apparel,392.53,182.78
+PROD-0028,Road Health MY-474,Health & Wellness,240.31,136.31
+PROD-0029,Tonight Apparel YK-713,Apparel,236.38,151.38
+PROD-0030,Her Health BQ-944,Health & Wellness,494.13,285.92
+PROD-0031,Individual Food RX-409,Food & Beverage,312.14,192.21
+PROD-0032,Size Health SX-097,Health & Wellness,221.97,149.18
+PROD-0033,Successful Food OO-395,Food & Beverage,450.15,280.49
+PROD-0034,Customer Food OG-942,Food & Beverage,233.28,145.92
+PROD-0035,Well Beauty CL-047,Beauty & Personal Care,386.42,215.00
+PROD-0036,His Sports UV-214,Sports & Outdoors,148.18,62.72
+PROD-0037,Just Beauty YI-232,Beauty & Personal Care,128.73,64.46
+PROD-0038,Under Health RK-588,Health & Wellness,54.08,24.08
+PROD-0039,Even Office ZH-745,Office Supplies,351.57,215.13
+PROD-0040,Management Apparel RU-123,Apparel,216.21,107.95
+PROD-0041,Represent Food FY-685,Food & Beverage,216.65,100.10
+PROD-0042,Indicate Office HD-048,Office Supplies,203.90,128.65
+PROD-0043,Home Electronics OX-496,Electronics,430.52,271.09
+PROD-0044,Box Office NJ-370,Office Supplies,246.34,168.21
+PROD-0045,Generation Beauty OD-931,Beauty & Personal Care,380.44,249.58
+PROD-0046,Where Office IC-461,Office Supplies,276.04,171.25
+PROD-0047,Young Automotive HG-047,Automotive,450.44,246.15
+PROD-0048,Easy Beauty DX-826,Beauty & Personal Care,226.38,92.52
+PROD-0049,Religious Toys VU-869,Toys & Games,339.40,217.03
+PROD-0050,Clear Home NA-617,Home & Kitchen,422.65,285.65
+PROD-0051,Wrong Automotive NC-405,Automotive,274.05,184.18
+PROD-0052,Light Automotive RX-351,Automotive,288.73,117.84
+PROD-0053,Off Office RM-506,Office Supplies,80.81,43.52
+PROD-0054,Can Electronics PO-713,Electronics,141.18,70.34
+PROD-0055,Picture Food PI-005,Food & Beverage,173.52,109.03
+PROD-0056,Stop Office WJ-931,Office Supplies,149.95,102.77
+PROD-0057,Despite Office VX-933,Office Supplies,137.35,58.31
+PROD-0058,Choose Electronics JI-904,Electronics,378.28,157.22
+PROD-0059,Now Toys QB-421,Toys & Games,123.75,52.05
+PROD-0060,Catch Electronics LU-053,Electronics,380.80,260.80
+PROD-0061,Admit Sports IV-240,Sports & Outdoors,422.03,247.48
+PROD-0062,Know Sports EC-811,Sports & Outdoors,76.22,45.80
+PROD-0063,Star Automotive GC-589,Automotive,474.66,256.08
+PROD-0064,Most Beauty UY-390,Beauty & Personal Care,386.95,174.26
+PROD-0065,When Automotive PB-847,Automotive,482.41,296.93
+PROD-0066,Ask Home RG-766,Home & Kitchen,482.89,208.82
+PROD-0067,Military Electronics UM-711,Electronics,465.51,266.62
+PROD-0068,Choose Office NO-124,Office Supplies,207.38,127.44
+PROD-0069,Pay Apparel MH-856,Apparel,302.17,196.16
+PROD-0070,Financial Sports BG-789,Sports & Outdoors,64.42,40.70
+PROD-0071,Student Automotive BC-183,Automotive,405.68,259.18
+PROD-0072,View Automotive DZ-365,Automotive,394.58,198.93
+PROD-0073,Just Office UQ-156,Office Supplies,335.84,141.28
+PROD-0074,Especially Toys EF-527,Toys & Games,21.14,11.12
+PROD-0075,Theory Food GV-116,Food & Beverage,66.19,45.55
+PROD-0076,Single Food DL-528,Food & Beverage,358.04,189.99
+PROD-0077,Or Health AW-851,Health & Wellness,483.25,232.46
+PROD-0078,Tv Health MT-604,Health & Wellness,390.70,210.77
+PROD-0079,He Automotive NJ-198,Automotive,145.17,95.16
+PROD-0080,Realize Apparel WJ-731,Apparel,150.28,80.44
+PROD-0081,Hold Food OZ-149,Food & Beverage,291.38,174.96
+PROD-0082,Laugh Toys RP-899,Toys & Games,28.92,18.95
+PROD-0083,Onto Home BL-094,Home & Kitchen,251.46,127.35
+PROD-0084,Explain Beauty AL-455,Beauty & Personal Care,180.06,119.58
+PROD-0085,True Beauty EJ-296,Beauty & Personal Care,284.56,157.93
+PROD-0086,Sit Sports NY-018,Sports & Outdoors,56.52,34.82
+PROD-0087,Kind Food XT-752,Food & Beverage,284.26,134.20
+PROD-0088,Set Food FD-599,Food & Beverage,328.26,179.64
+PROD-0089,Clearly Electronics RF-290,Electronics,60.13,28.05
+PROD-0090,Expert Sports MC-767,Sports & Outdoors,163.51,93.93
+PROD-0091,Join Food HW-438,Food & Beverage,283.43,142.60
+PROD-0092,Law Health FH-149,Health & Wellness,175.43,107.16
+PROD-0093,Region Beauty ZM-403,Beauty & Personal Care,163.71,76.81
+PROD-0094,Around Sports NX-034,Sports & Outdoors,168.04,104.67
+PROD-0095,Certain Home HA-445,Home & Kitchen,107.90,67.07
+PROD-0096,Modern Beauty YI-622,Beauty & Personal Care,366.42,253.92
+PROD-0097,Score Health QZ-388,Health & Wellness,304.44,211.33
+PROD-0098,Health Sports BB-160,Sports & Outdoors,158.68,80.65
+PROD-0099,Machine Beauty BK-159,Beauty & Personal Care,21.86,12.25
+PROD-0100,Interview Beauty ZB-641,Beauty & Personal Care,37.08,15.44

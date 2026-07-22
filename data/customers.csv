@@ -1,0 +1,201 @@
+customer_id,customer_name,segment,region,customer_since
+CUST-0001,"Rodriguez, Figueroa and Sanchez",Enterprise,Northeast,2019-02-12
+CUST-0002,Rhodes PLC,SMB,Southeast,2018-09-11
+CUST-0003,Johnson-Davis,Mid-Market,Southeast,2019-11-11
+CUST-0004,"Johnson, Gonzalez and Santos",Enterprise,Southwest,2022-05-11
+CUST-0005,Cole LLC,Enterprise,Southwest,2024-06-22
+CUST-0006,Blake and Sons,E-Commerce,Northeast,2023-08-02
+CUST-0007,Ramirez-Lewis,Enterprise,Northeast,2024-02-09
+CUST-0008,Davis Inc,Mid-Market,Southeast,2020-11-14
+CUST-0009,Munoz-Roman,Enterprise,Southwest,2023-11-02
+CUST-0010,"Martinez, Nielsen and Miller",Mid-Market,Southwest,2020-05-06
+CUST-0011,"Montgomery, Hensley and Ray",E-Commerce,Southeast,2023-08-21
+CUST-0012,Stanley LLC,E-Commerce,Southwest,2025-11-17
+CUST-0013,Delacruz Group,SMB,Northeast,2020-03-22
+CUST-0014,"Flowers, Martin and Kelly",Mid-Market,West,2023-05-12
+CUST-0015,"Zuniga, Wong and Lynch",SMB,Midwest,2019-05-15
+CUST-0016,"Sanchez, Ford and Nelson",Mid-Market,Southeast,2025-05-27
+CUST-0017,"Hawkins, Cohen and Cameron",SMB,Northeast,2024-03-16
+CUST-0018,Underwood LLC,Enterprise,West,2021-03-17
+CUST-0019,Clark PLC,Enterprise,Midwest,2025-01-03
+CUST-0020,Lewis-Porter,SMB,Southwest,2025-01-28
+CUST-0021,"Ellis, Baker and Wright",SMB,Northeast,2022-06-28
+CUST-0022,Burgess-Patterson,E-Commerce,Southwest,2022-09-01
+CUST-0023,Robinson-Bright,Enterprise,West,2022-01-28
+CUST-0024,Campos Inc,Enterprise,Southwest,2019-03-23
+CUST-0025,Conner Group,SMB,Southwest,2022-10-09
+CUST-0026,James-Ferrell,SMB,Southwest,2022-03-26
+CUST-0027,"Valencia, Smith and Le",Mid-Market,Northeast,2023-06-15
+CUST-0028,"Potter, Mack and Peterson",Enterprise,Southeast,2020-05-07
+CUST-0029,Chavez Ltd,SMB,Northeast,2025-01-02
+CUST-0030,Stanton-Gill,Mid-Market,Northeast,2022-01-22
+CUST-0031,Harrell LLC,E-Commerce,Midwest,2024-09-24
+CUST-0032,"Lynch, Hernandez and Farmer",E-Commerce,Midwest,2022-04-25
+CUST-0033,"Sellers, George and Burns",Mid-Market,Midwest,2018-11-23
+CUST-0034,Koch-Decker,SMB,Southeast,2020-06-17
+CUST-0035,Allen PLC,SMB,Northeast,2025-07-29
+CUST-0036,Dennis Inc,Mid-Market,Southwest,2025-10-27
+CUST-0037,"Cannon, Anderson and Alvarez",Mid-Market,Southeast,2022-05-25
+CUST-0038,Rose-Obrien,E-Commerce,West,2025-09-17
+CUST-0039,"Campos, Vaughn and Marquez",SMB,Southwest,2021-03-11
+CUST-0040,"Santos, Kim and Holmes",Mid-Market,Midwest,2018-12-20
+CUST-0041,Brown Inc,Enterprise,Southeast,2022-09-15
+CUST-0042,Chapman Inc,Enterprise,Midwest,2018-07-27
+CUST-0043,"Brown, Jones and Johnson",E-Commerce,Midwest,2020-08-23
+CUST-0044,"Young, Caldwell and Lewis",Enterprise,Southeast,2019-01-22
+CUST-0045,"Johnston, Sanchez and Kennedy",SMB,Southeast,2021-04-04
+CUST-0046,Davis Group,E-Commerce,West,2020-10-31
+CUST-0047,Owens-Daniel,E-Commerce,Southeast,2023-05-21
+CUST-0048,"Garcia, Powell and Morgan",SMB,Southeast,2024-11-21
+CUST-0049,Lee PLC,Mid-Market,Southwest,2021-08-03
+CUST-0050,White-Ford,SMB,Southwest,2024-12-29
+CUST-0051,Ramos PLC,E-Commerce,Southwest,2018-10-13
+CUST-0052,"Kidd, Huff and Novak",E-Commerce,Midwest,2025-05-29
+CUST-0053,Martin Group,Mid-Market,Southeast,2021-11-07
+CUST-0054,Barrera-Martin,E-Commerce,Northeast,2018-01-07
+CUST-0055,Baker-Bowers,Enterprise,Northeast,2021-08-22
+CUST-0056,Horton-Cross,Mid-Market,Southeast,2024-04-07
+CUST-0057,"Higgins, Moore and Phillips",E-Commerce,Southwest,2025-09-30
+CUST-0058,"Fitzgerald, Brown and Edwards",Enterprise,West,2018-05-27
+CUST-0059,Shaw-Farrell,E-Commerce,Southwest,2019-04-05
+CUST-0060,"Miller, Lopez and Larson",E-Commerce,Southwest,2023-05-27
+CUST-0061,Powell PLC,SMB,Southwest,2019-12-21
+CUST-0062,"Williams, Miller and Sandoval",Enterprise,Northeast,2022-07-10
+CUST-0063,Donovan-Harris,SMB,Midwest,2023-09-23
+CUST-0064,Baker and Sons,Enterprise,Midwest,2023-05-17
+CUST-0065,Bryant-Hickman,E-Commerce,Southeast,2025-06-26
+CUST-0066,Ellis PLC,E-Commerce,Northeast,2025-12-19
+CUST-0067,Medina PLC,SMB,Southwest,2020-02-14
+CUST-0068,Ibarra-Suarez,Mid-Market,Southwest,2020-12-15
+CUST-0069,Kim PLC,Enterprise,Midwest,2023-08-18
+CUST-0070,"Riggs, Roman and Rice",Mid-Market,Southeast,2023-05-05
+CUST-0071,"Evans, Alvarado and Mcmillan",SMB,Southeast,2019-01-28
+CUST-0072,Preston Ltd,Enterprise,Southwest,2022-06-04
+CUST-0073,Campbell-Clark,SMB,West,2020-09-28
+CUST-0074,"Walters, Baker and Freeman",Enterprise,Northeast,2025-03-29
+CUST-0075,Davis Group,SMB,Midwest,2024-08-19
+CUST-0076,Smith and Sons,Mid-Market,Northeast,2023-02-05
+CUST-0077,Martin-Ramos,Mid-Market,Southwest,2023-08-24
+CUST-0078,"Smith, Jones and Ware",Enterprise,Northeast,2025-03-25
+CUST-0079,"Johnson, Wood and Tran",E-Commerce,Northeast,2021-06-09
+CUST-0080,Parker Inc,Mid-Market,Southeast,2025-03-10
+CUST-0081,Fleming Ltd,E-Commerce,Southwest,2018-10-28
+CUST-0082,"Henson, Russell and Oliver",Mid-Market,Midwest,2019-03-28
+CUST-0083,Hancock and Sons,E-Commerce,Southeast,2025-01-18
+CUST-0084,White LLC,Mid-Market,Midwest,2024-04-04
+CUST-0085,Pham-Shields,E-Commerce,Midwest,2024-06-26
+CUST-0086,Moore-Haynes,E-Commerce,Southwest,2021-01-22
+CUST-0087,Garrison and Sons,E-Commerce,Northeast,2019-08-06
+CUST-0088,Bailey-Hoover,Mid-Market,Southeast,2024-12-20
+CUST-0089,Johnson and Sons,Enterprise,Midwest,2021-03-09
+CUST-0090,Lin-Rasmussen,Enterprise,Southwest,2020-03-26
+CUST-0091,"Hicks, Frazier and Anthony",Mid-Market,Southwest,2020-08-25
+CUST-0092,Wilson LLC,Mid-Market,Northeast,2019-06-06
+CUST-0093,Johnson-Carlson,Enterprise,Northeast,2020-10-06
+CUST-0094,Graham-Joyce,Mid-Market,Northeast,2018-12-04
+CUST-0095,"Lee, Williams and Graham",Enterprise,Midwest,2022-02-27
+CUST-0096,"Mcdaniel, Bentley and Mclaughlin",Enterprise,Southwest,2019-07-30
+CUST-0097,Jones-Beck,Mid-Market,Midwest,2020-08-22
+CUST-0098,Alvarado-Martinez,E-Commerce,Southeast,2025-03-14
+CUST-0099,"Parker, Ortiz and Powell",Mid-Market,Southwest,2020-05-13
+CUST-0100,Lee Ltd,E-Commerce,Southeast,2025-07-09
+CUST-0101,"Adkins, Thompson and Carroll",E-Commerce,West,2021-04-01
+CUST-0102,Torres and Sons,Mid-Market,Northeast,2021-06-09
+CUST-0103,"Lawson, Morris and Ramos",Enterprise,West,2023-05-28
+CUST-0104,"Kennedy, Santana and Flynn",SMB,West,2019-05-11
+CUST-0105,Campbell Ltd,E-Commerce,West,2023-01-23
+CUST-0106,Davis-Crane,Enterprise,Northeast,2019-11-18
+CUST-0107,Walker-Gonzalez,Enterprise,West,2018-03-13
+CUST-0108,Riggs PLC,SMB,Northeast,2024-10-18
+CUST-0109,Gibson Ltd,Mid-Market,Southeast,2022-08-09
+CUST-0110,"Horton, Snyder and Sanchez",Mid-Market,Southwest,2023-04-01
+CUST-0111,Stafford Inc,E-Commerce,Southeast,2024-03-23
+CUST-0112,Thompson Ltd,E-Commerce,Southeast,2022-02-21
+CUST-0113,Grant Inc,SMB,West,2021-08-26
+CUST-0114,Contreras-Travis,Mid-Market,Northeast,2022-10-06
+CUST-0115,Salazar-Ball,E-Commerce,Southwest,2022-01-14
+CUST-0116,"Griffin, Moore and Hensley",Enterprise,Northeast,2021-08-07
+CUST-0117,Larsen LLC,Enterprise,Northeast,2024-02-15
+CUST-0118,"Washington, Allen and Gonzales",Mid-Market,Southeast,2023-09-16
+CUST-0119,Nelson LLC,E-Commerce,West,2025-02-21
+CUST-0120,Taylor and Sons,E-Commerce,Southeast,2021-01-23
+CUST-0121,Mccarthy Inc,E-Commerce,Northeast,2021-04-26
+CUST-0122,Daniels-Perry,Mid-Market,West,2019-08-28
+CUST-0123,Price-Carrillo,Enterprise,West,2025-07-26
+CUST-0124,Gates PLC,SMB,West,2021-01-16
+CUST-0125,Bender LLC,SMB,West,2024-01-10
+CUST-0126,Medina-Navarro,E-Commerce,Southeast,2024-05-25
+CUST-0127,Freeman LLC,Mid-Market,Midwest,2021-06-27
+CUST-0128,Price Ltd,Mid-Market,Northeast,2023-06-07
+CUST-0129,Ramsey-Pittman,Enterprise,Midwest,2025-05-09
+CUST-0130,"Ferguson, Meadows and Vargas",Enterprise,Northeast,2023-04-21
+CUST-0131,Day and Sons,E-Commerce,Southwest,2024-12-07
+CUST-0132,Williams Group,Mid-Market,Northeast,2020-08-14
+CUST-0133,Murphy-Juarez,Enterprise,Southeast,2021-01-12
+CUST-0134,King-Miller,Enterprise,Southwest,2018-02-26
+CUST-0135,"Williams, Crane and Walker",Enterprise,Southeast,2018-07-20
+CUST-0136,"Williams, Johnson and Wright",E-Commerce,Northeast,2024-09-17
+CUST-0137,"Hernandez, Martinez and Caldwell",Mid-Market,Southwest,2022-07-06
+CUST-0138,Marshall LLC,Enterprise,Southwest,2024-02-19
+CUST-0139,Obrien Ltd,Enterprise,West,2023-09-30
+CUST-0140,Oconnell Inc,SMB,Midwest,2022-08-18
+CUST-0141,Johnston-Odonnell,Mid-Market,Midwest,2021-01-01
+CUST-0142,"Gonzalez, Vargas and Rivas",Mid-Market,Midwest,2019-12-11
+CUST-0143,"Barton, Jefferson and Burke",E-Commerce,Southeast,2018-12-20
+CUST-0144,"Patton, Reed and Patterson",SMB,West,2020-12-18
+CUST-0145,"Holland, Smith and Fisher",SMB,Northeast,2021-12-02
+CUST-0146,Yu-Reid,Enterprise,West,2024-08-17
+CUST-0147,"Hernandez, Thompson and Boyd",Enterprise,Northeast,2023-03-15
+CUST-0148,"Morton, Medina and Webb",Mid-Market,Southwest,2021-06-26
+CUST-0149,"Vargas, Morris and Sanchez",SMB,Southeast,2025-06-23
+CUST-0150,Keith-Sanchez,SMB,Northeast,2021-09-19
+CUST-0151,"Barnett, Rogers and Snyder",Mid-Market,Midwest,2020-08-07
+CUST-0152,Lewis-Salinas,SMB,Southeast,2020-09-21
+CUST-0153,"Haynes, Hill and Smith",E-Commerce,Southwest,2025-08-01
+CUST-0154,Allen Group,SMB,Southwest,2021-11-28
+CUST-0155,Vaughn Ltd,Enterprise,Southwest,2023-09-11
+CUST-0156,Mcguire-Davis,SMB,Northeast,2019-10-10
+CUST-0157,"Sanchez, Beck and Wood",Mid-Market,Midwest,2022-06-05
+CUST-0158,Coleman-Reese,Enterprise,Northeast,2020-08-24
+CUST-0159,"Chavez, Parker and Hall",Mid-Market,Midwest,2023-10-08
+CUST-0160,Wilson-Herrera,SMB,Southwest,2024-02-05
+CUST-0161,Lee Ltd,Mid-Market,Midwest,2021-11-15
+CUST-0162,"Lawrence, Wolf and Carlson",Mid-Market,Midwest,2025-11-04
+CUST-0163,Phillips LLC,E-Commerce,Midwest,2019-06-09
+CUST-0164,Erickson and Sons,Enterprise,Northeast,2020-03-12
+CUST-0165,Tran Ltd,E-Commerce,Midwest,2025-07-20
+CUST-0166,"Oneill, Henry and Salas",Enterprise,Northeast,2022-08-04
+CUST-0167,Mendoza-Peterson,SMB,Southeast,2025-09-21
+CUST-0168,Everett-Woods,SMB,Southeast,2024-07-29
+CUST-0169,Vasquez-Ray,E-Commerce,Southwest,2023-06-29
+CUST-0170,Hernandez PLC,E-Commerce,Southwest,2025-08-04
+CUST-0171,Mcknight Inc,Enterprise,Northeast,2022-06-19
+CUST-0172,Obrien-Gibbs,Enterprise,Southeast,2019-10-22
+CUST-0173,"James, Kerr and Evans",Enterprise,Midwest,2022-09-16
+CUST-0174,Torres-Oliver,Mid-Market,West,2022-11-16
+CUST-0175,"Garcia, Farmer and Garrett",Mid-Market,Northeast,2020-02-13
+CUST-0176,Moore and Sons,SMB,Midwest,2022-06-01
+CUST-0177,Smith Group,Enterprise,Midwest,2023-07-07
+CUST-0178,Carter-Hall,Mid-Market,Southeast,2023-08-28
+CUST-0179,"Heath, Jones and Hall",Enterprise,Midwest,2020-02-12
+CUST-0180,"Lawrence, Lara and Gonzalez",E-Commerce,Southwest,2018-12-02
+CUST-0181,Holland LLC,Mid-Market,Southeast,2024-08-11
+CUST-0182,Brown LLC,Mid-Market,Southeast,2022-10-05
+CUST-0183,"Morse, Gonzales and Harrison",E-Commerce,Northeast,2020-06-07
+CUST-0184,Bender-Mason,Mid-Market,Midwest,2021-12-13
+CUST-0185,George Group,E-Commerce,Southeast,2023-11-16
+CUST-0186,"Wright, Davis and Hayden",SMB,Southeast,2024-09-07
+CUST-0187,"Matthews, Smith and Hubbard",Enterprise,West,2024-07-27
+CUST-0188,"Williams, Avila and Ruiz",Enterprise,West,2023-03-19
+CUST-0189,White-Richards,Mid-Market,Southeast,2023-01-29
+CUST-0190,Costa-Harrison,E-Commerce,Midwest,2021-04-07
+CUST-0191,Santiago-Hodge,SMB,Southeast,2020-08-21
+CUST-0192,"Simpson, Bates and Morales",Mid-Market,Northeast,2024-01-31
+CUST-0193,Gibson LLC,Mid-Market,West,2020-01-08
+CUST-0194,Cordova Group,SMB,Midwest,2024-12-01
+CUST-0195,Sandoval PLC,Enterprise,Midwest,2021-09-11
+CUST-0196,Lopez LLC,SMB,Southwest,2022-12-24
+CUST-0197,Garrett-Wolf,E-Commerce,Southwest,2019-08-18
+CUST-0198,"Anderson, Roberts and Gilmore",SMB,Northeast,2021-11-16
+CUST-0199,Dudley PLC,Enterprise,Midwest,2024-05-23
+CUST-0200,"Moore, Pierce and Tran",Mid-Market,Southwest,2018-09-30

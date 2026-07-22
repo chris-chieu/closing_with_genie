@@ -1,0 +1,15 @@
+command:
+  - streamlit
+  - run
+  - main.py
+
+env:
+  - name: VOLUME_PATH
+    description: "UC Volume path for uploaded corrections files"
+    value: "/Volumes/christophe_chieu/demo_finance_department/documents_uploaded"
+  - name: JOB_ID
+    description: "Databricks Job ID for the reconciliation corrections job"
+    value: "432315051319076"
+  - name: SQL_WAREHOUSE_ID
+    description: "SQL Warehouse used by the Reset Demo function to rebuild tables"
+    valueFrom: "sql-warehouse"
