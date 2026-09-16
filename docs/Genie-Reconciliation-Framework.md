@@ -1,4 +1,4 @@
-# Genie Reconciliation Methodology
+# Genie Reconciliation Framework
 ## Reusable principles and verification prompts for Databricks Genie
 
 > **Purpose:** A practitioner framework for deploying Databricks Genie as a read-only monthly reconciliation investigation assistant.
