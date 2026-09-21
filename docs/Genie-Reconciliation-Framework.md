@@ -102,38 +102,79 @@ Do not require Genie to infer business keys from similarly named columns. Declar
 ### Genie Code action script
 
 ```text
-Assess reconciliation grain and linkage.
+# Reconciliation Assessment
 
-PARAMETERS:
-- Catalog: <your_catalog>
-- Schema: <your_schema>
-- Close period: <YYYY-MM or other period identifier>
-- Reconciliation scope field(s): <for example entity_code, bank_account, portfolio>
+Assess whether a catalog's tables can support a reliable **monthly close reconciliation**: correct grain, sufficient metadata, and data that actually ties.
 
-STEP 1 — DISCOVER:
-1. List tables and views in the catalog/schema using information_schema.
-2. Identify candidate reconciliation datasets and assign a role: source, target, supporting detail,
-   reference, readiness/control, or break summary.
-3. For each candidate, list documented table grain, period field, scope field(s), primary/business key
-   candidates, and descriptions.
+**Catalog**: `{{CATALOG}}`
+**Schema filter** _(optional)_: `{{SCHEMA_PATTERN}}`
 
-STEP 2 — CHECK:
-4. Identify datasets with no documented grain, no usable period-scoping field, or no declared linkage
-   to another relevant dataset.
-5. For each declared linkage, profile the selected close period for null keys, duplicate keys,
-   unmatched keys, and cardinality risks.
-6. Identify summary-only datasets lacking a documented supporting-detail drill-down route.
-7. Draft a sample trace query that starts from one selected break/variance and returns its
-   contributing records.
+---
 
-STEP 3 — BUILD:
-8. Draft table/column comments for missing grain, period, scope, and key documentation.
-9. Draft reusable profiling SQL for key completeness and match-rate checks by close period.
-10. Draft a reconciliation-key and drill-down mapping artifact using actual table and column names.
+## Phase 1 — Identify Reconciliation Candidates
 
-Output a table-role and linkage inventory. Flag MISSING_GRAIN, MISSING_PERIOD_SCOPE,
-UNDECLARED_LINKAGE, KEY_QUALITY_RISK, or NO_DRILLDOWN_PATH. Do not claim that semantic
-adequacy has been proven.
+1. List all tables/views via `information_schema.tables`. Spot replicated patterns across schemas; pick one canonical instance.
+2. **Filter to reconciliation-relevant objects only.** Keep tables that participate in the close cycle — general ledger, subledgers, adjustments, chart of accounts, period dimensions, trial balance / financial-statement views, DQ or break datasets. Drop tables unrelated to the reconciliation (competitor benchmarks, market data, app telemetry, etc.).
+3. `SHOW CREATE TABLE` on every VIEW / METRIC_VIEW in the filtered set **now** — the SQL reveals derivation logic (period scope, sign conventions, unioned adjustments) needed for Phases 2-3.
+4. Classify each kept object: **source** (transactions), **target** (derived balances), **supporting detail** (adjustments), **reference** (master data, dimensions), **control** (DQ signals), or **break summary** (variances).
+5. `readTable` on key tables for columns, types, comments, and `topJoins`. Batch independent calls in parallel; use `UNION ALL` to combine multi-table checks into single round-trips.
+
+---
+
+## Phase 2 — Validate Grain and Semantics
+
+### Grain (data-proven, not inferred)
+
+6. Test every inferred grain: `COUNT(*)` vs `COUNT(DISTINCT concat_key)` for the **latest close period**. Report UNIQUE / DUPLICATES.
+7. **Sample indicator values first** (`SELECT DISTINCT dr_cr …`) — do not assume 'DR'/'CR'; could be 'D'/'C', +1/-1, etc.
+8. **Test for double-entry**: journal/adjustment tables often carry 2+ rows per header ID. Test naïve grain first; when it fails, extend (e.g., add `account_code`) and re-test.
+9. Confirm period format is consistent across reconciliation tables and every value exists in the date dimension.
+10. Flag dimension overlaps (two dims sharing the same business key).
+
+Uniqueness alone ≠ correct granularity. It means no duplicates today, not that the grain is intentional, governed, or durable.
+
+### Semantic metadata scorecard
+
+Report as percentages and counts, scoped to reconciliation-relevant objects:
+
+11. **Table comments**: % with comment; do they declare grain/key or just purpose?
+12. **Column comments**: % documented; are key, FK, and monetary columns covered?
+13. **PK/FK constraints**: count from `information_schema.table_constraints`.
+14. **Governed tags**: count from `information_schema.column_tags`.
+15. **Monetary type consistency**: matrix of (table, column, type) across the recon chain. Flag DOUBLE↔DECIMAL mismatches.
+
+---
+
+## Phase 3 — Run the Reconciliation
+
+Metadata and grain checks are necessary but insufficient. Prove whether the data ties.
+
+**Scope**: run against the **latest close period**. If issues are found, extend to one prior period to distinguish persistent vs one-off problems.
+
+16. **Source balance test**: debits = credits for GL (or domain equivalent). If not, isolate unbalanced entries by header ID.
+17. **Reproduce recon balances** from source tables using derivation logic from step 3. If a number can't be reproduced, document the gap.
+18. **Stored vs live drift**: if both a snapshot table and live view exist, compare side by side. Flag resolved breaks, new breaks, shifted amounts.
+19. **Trace each break to root cause**: adjustment explains it? Unbalanced entry? Neither → flag as unexplained.
+20. **Reconciliation coverage**: % of source activity (rows and amount) covered by the recon engine vs unreconciled.
+
+---
+
+## Output
+
+| Deliverable | Content |
+|---|---|
+| Grain inventory | Per reconciliation table: role, tested grain, rows, distinct-at-grain, UNIQUE/DUPLICATES |
+| Metadata scorecard | % table comments (grain-declaring vs purpose-only), % column comments, PK/FK count, tag count |
+| Type matrix | Monetary columns with types; mismatches highlighted |
+| Drift comparison | Stored vs live: amount, delta, drift status per recon line |
+| Root cause trace | Per break: amount, source (adjustment / unbalanced entry / unexplained) |
+| Flag matrix | Per finding, using flags below |
+
+### Flags
+
+`MISSING_GRAIN` · `MISSING_PERIOD_SCOPE` · `UNDECLARED_LINKAGE` · `KEY_QUALITY_RISK` · `NO_DRILLDOWN_PATH` · `TYPE_MISMATCH` · `SOURCE_IMBALANCE` · `SNAPSHOT_DRIFT` · `AMBIGUOUS_DIMENSION`
+
+Close with: **"Semantic adequacy has not been proven."**
 ```
 
 ---
